@@ -1,1 +1,40 @@
-<p>multiple-choice works!</p>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-10">
+          <h3>{{contenido.indicacion}}</h3>
+        </div>
+      <div class="col-md-10">
+        <div *ngFor="let pregunta of contenido.preguntas; let i = index" class="form-row">
+            <div class="form-group col-md-12">
+              <p><strong>{{i + 1}}. {{pregunta.pregunta}}</strong></p>
+            </div>  
+            <div class="form-group col-md-4" *ngFor="let respuesta of pregunta.respuestas">
+              <button 
+              type="button" class="button btn btn-primary"
+              (click)="seleccionar(pregunta.respuestas, respuesta)"
+              [ngClass]="{
+                'btn-light':pregunta.calificada==false || (pregunta.calificada == true && respuesta.seleccionada == false && respuesta.correcta == false),
+                'btn-dark': (pregunta.calificada == false && respuesta.seleccionada == true) || (pregunta.calificada == true && respuesta.seleccionada == true && respuesta.correcta == false),
+                'btn-success': pregunta.calificada == true && respuesta.correcta == true
+              }"
+              [disabled]="contenido.calificada">
+                {{respuesta.respuesta}}
+              </button>
+            </div>
+  
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-10" *ngIf="!contenido.calificada">
+        <div class="form-group">
+          <button (click)="calificar()" class="btn btn-primary button">
+            Enviar
+          </button>
+        </div>    
+      </div>
+      <div class="col-md-10" *ngIf="contenido.calificada">
+        <h4>Calificación: {{calificacion}}</h4>
+      </div>
+    </div>
+  </div>
