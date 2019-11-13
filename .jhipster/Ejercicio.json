@@ -1,0 +1,40 @@
+{
+    "name": "Ejercicio",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contenido",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "componente",
+            "otherEntityRelationshipName": "ejercicio",
+            "relationshipName": "componente",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "tipoActividad",
+            "otherEntityRelationshipName": "ejercicio",
+            "relationshipName": "tipoactividad",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191113185455",
+    "entityTableName": "ejercicio",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

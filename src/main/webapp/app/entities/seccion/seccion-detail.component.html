@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="seccion">
+            <h2><span jhiTranslate="nimbusApp.seccion.detail.title">Seccion</span> {{seccion.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="nimbusApp.seccion.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{seccion.descripcion}}</span>
+                </dd>
+                <dt><span jhiTranslate="nimbusApp.seccion.curso">Curso</span></dt>
+                <dd>
+                    <div *ngIf="seccion.curso">
+                        <a [routerLink]="['/curso', seccion.curso?.id, 'view']">{{seccion.curso?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/seccion', seccion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

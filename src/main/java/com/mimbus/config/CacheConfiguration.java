@@ -42,6 +42,18 @@ public class CacheConfiguration {
             createCache(cm, com.mimbus.domain.User.class.getName());
             createCache(cm, com.mimbus.domain.Authority.class.getName());
             createCache(cm, com.mimbus.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mimbus.domain.TipoComponente.class.getName());
+            createCache(cm, com.mimbus.domain.Componente.class.getName());
+            createCache(cm, com.mimbus.domain.Seccion.class.getName());
+            createCache(cm, com.mimbus.domain.Ejercicio.class.getName());
+            createCache(cm, com.mimbus.domain.Ejercicio.class.getName() + ".tipoactividads");
+            createCache(cm, com.mimbus.domain.Calificacion.class.getName());
+            createCache(cm, com.mimbus.domain.Curso.class.getName());
+            createCache(cm, com.mimbus.domain.Curso.class.getName() + ".paquetes");
+            createCache(cm, com.mimbus.domain.Paquete.class.getName());
+            createCache(cm, com.mimbus.domain.Paquete.class.getName() + ".cursos");
+            createCache(cm, com.mimbus.domain.TipoActividad.class.getName());
+            createCache(cm, com.mimbus.domain.TipoActividad.class.getName() + ".ejercicios");
             // jhipster-needle-ehcache-add-entry
         };
     }

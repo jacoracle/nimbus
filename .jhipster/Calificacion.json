@@ -1,0 +1,40 @@
+{
+    "name": "Calificacion",
+    "fields": [
+        {
+            "fieldName": "score",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "monedas",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fecha",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "intentos",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "componente",
+            "otherEntityRelationshipName": "calificacion",
+            "relationshipName": "componente",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191113185456",
+    "entityTableName": "calificacion",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

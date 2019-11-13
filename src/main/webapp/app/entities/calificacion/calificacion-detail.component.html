@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="calificacion">
+            <h2><span jhiTranslate="nimbusApp.calificacion.detail.title">Calificacion</span> {{calificacion.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="nimbusApp.calificacion.score">Score</span></dt>
+                <dd>
+                    <span>{{calificacion.score}}</span>
+                </dd>
+                <dt><span jhiTranslate="nimbusApp.calificacion.monedas">Monedas</span></dt>
+                <dd>
+                    <span>{{calificacion.monedas}}</span>
+                </dd>
+                <dt><span jhiTranslate="nimbusApp.calificacion.fecha">Fecha</span></dt>
+                <dd>
+                    <span>{{calificacion.fecha}}</span>
+                </dd>
+                <dt><span jhiTranslate="nimbusApp.calificacion.intentos">Intentos</span></dt>
+                <dd>
+                    <span>{{calificacion.intentos}}</span>
+                </dd>
+                <dt><span jhiTranslate="nimbusApp.calificacion.componente">Componente</span></dt>
+                <dd>
+                    <div *ngIf="calificacion.componente">
+                        <a [routerLink]="['/componente', calificacion.componente?.id, 'view']">{{calificacion.componente?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/calificacion', calificacion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

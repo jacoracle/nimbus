@@ -1,0 +1,28 @@
+{
+    "name": "Seccion",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "curso",
+            "otherEntityRelationshipName": "seccion",
+            "relationshipName": "curso",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191113185454",
+    "entityTableName": "seccion",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

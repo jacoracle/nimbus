@@ -1,0 +1,80 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="nimbusApp.componente.home.title">Componentes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-componente" [routerLink]="['/componente/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="nimbusApp.componente.home.createLabel">
+            Create a new Componente
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="componentes?.length === 0">
+        <span jhiTranslate="nimbusApp.componente.home.notFound">No componentes found</span>
+    </div>
+    <div class="table-responsive" *ngIf="componentes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="descripcion"><span jhiTranslate="nimbusApp.componente.descripcion">Descripcion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="version"><span jhiTranslate="nimbusApp.componente.version">Version</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="tipocomponente.id"><span jhiTranslate="nimbusApp.componente.tipocomponente">Tipocomponente</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="seccion.id"><span jhiTranslate="nimbusApp.componente.seccion">Seccion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let componente of componentes ;trackBy: trackId">
+                <td><a [routerLink]="['/componente', componente.id, 'view' ]">{{componente.id}}</a></td>
+                <td>{{componente.descripcion}}</td>
+                <td>{{componente.version}}</td>
+                <td>
+                    <div *ngIf="componente.tipocomponente">
+                        <a [routerLink]="['/tipo-componente', componente.tipocomponente?.id, 'view' ]" >{{componente.tipocomponente?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="componente.seccion">
+                        <a [routerLink]="['/seccion', componente.seccion?.id, 'view' ]" >{{componente.seccion?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/componente', componente.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/componente', componente.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/componente', { outlets: { popup: componente.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="componentes?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

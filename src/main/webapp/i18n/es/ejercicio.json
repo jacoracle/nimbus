@@ -1,0 +1,25 @@
+{
+  "nimbusApp": {
+    "ejercicio": {
+      "home": {
+        "title": "Ejercicios",
+        "createLabel": "Crear nuevo Ejercicio",
+        "createOrEditLabel": "Crear o editar Ejercicio",
+        "notFound": "No Ejercicios found"
+      },
+      "created": "Un nuevo Ejercicio ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ejercicio ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ejercicio ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Ejercicio {{ id }}?"
+      },
+      "detail": {
+        "title": "Ejercicio"
+      },
+      "descripcion": "Descripcion",
+      "contenido": "Contenido",
+      "componente": "Componente",
+      "tipoactividad": "Tipoactividad"
+    }
+  }
+}

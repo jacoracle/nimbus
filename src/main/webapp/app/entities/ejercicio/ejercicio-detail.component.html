@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="ejercicio">
+            <h2><span jhiTranslate="nimbusApp.ejercicio.detail.title">Ejercicio</span> {{ejercicio.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="nimbusApp.ejercicio.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{ejercicio.descripcion}}</span>
+                </dd>
+                <dt><span jhiTranslate="nimbusApp.ejercicio.contenido">Contenido</span></dt>
+                <dd>
+                    <span>{{ejercicio.contenido}}</span>
+                </dd>
+                <dt><span jhiTranslate="nimbusApp.ejercicio.componente">Componente</span></dt>
+                <dd>
+                    <div *ngIf="ejercicio.componente">
+                        <a [routerLink]="['/componente', ejercicio.componente?.id, 'view']">{{ejercicio.componente?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="nimbusApp.ejercicio.tipoactividad">Tipoactividad</span></dt>
+                <dd>
+                    <span *ngFor="let tipoactividad of ejercicio.tipoactividads; let last = last">
+                        <a [routerLink]="['/tipo-actividad', tipoactividad?.id, 'view' ]">{{tipoactividad.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ejercicio', ejercicio.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

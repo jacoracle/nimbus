@@ -1,0 +1,26 @@
+{
+  "nimbusApp": {
+    "calificacion": {
+      "home": {
+        "title": "Calificacions",
+        "createLabel": "Crear nuevo Calificacion",
+        "createOrEditLabel": "Crear o editar Calificacion",
+        "notFound": "No Calificacions found"
+      },
+      "created": "Un nuevo Calificacion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Calificacion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Calificacion ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Calificacion {{ id }}?"
+      },
+      "detail": {
+        "title": "Calificacion"
+      },
+      "score": "Score",
+      "monedas": "Monedas",
+      "fecha": "Fecha",
+      "intentos": "Intentos",
+      "componente": "Componente"
+    }
+  }
+}

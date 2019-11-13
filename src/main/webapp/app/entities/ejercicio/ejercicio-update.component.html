@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-ejercicio-heading" jhiTranslate="nimbusApp.ejercicio.home.createOrEditLabel">Create or edit a Ejercicio</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nimbusApp.ejercicio.descripcion" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                           formControlName="descripcion"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nimbusApp.ejercicio.contenido" for="field_contenido">Contenido</label>
+                    <input type="text" class="form-control" name="contenido" id="field_contenido"
+                           formControlName="contenido"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="nimbusApp.ejercicio.componente" for="field_componente">Componente</label>
+                    <select class="form-control" id="field_componente" name="componente" formControlName="componente">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="componenteOption.id === editForm.get('componente').value?.id ? editForm.get('componente').value : componenteOption" *ngFor="let componenteOption of componentes; trackBy: trackComponenteById">{{componenteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="nimbusApp.ejercicio.tipoactividad" for="field_tipoactividads">Tipoactividad</label>
+                    <select class="form-control" id="field_tipoactividads" multiple name="tipoactividads" formControlName="tipoactividads">
+                        <option [ngValue]="getSelected(editForm.get('tipoactividads').value, tipoActividadOption)" *ngFor="let tipoActividadOption of tipoactividads; trackBy: trackTipoActividadById">{{tipoActividadOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+  "nimbusApp": {
+    "seccion": {
+      "home": {
+        "title": "Seccions",
+        "createLabel": "Crear nuevo Seccion",
+        "createOrEditLabel": "Crear o editar Seccion",
+        "notFound": "No Seccions found"
+      },
+      "created": "Un nuevo Seccion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Seccion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Seccion ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Seccion {{ id }}?"
+      },
+      "detail": {
+        "title": "Seccion"
+      },
+      "descripcion": "Descripcion",
+      "curso": "Curso"
+    }
+  }
+}

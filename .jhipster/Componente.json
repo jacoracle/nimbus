@@ -1,0 +1,39 @@
+{
+    "name": "Componente",
+    "fields": [
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "version",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "tipoComponente",
+            "otherEntityRelationshipName": "componente",
+            "relationshipName": "tipocomponente",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "seccion",
+            "otherEntityRelationshipName": "componente",
+            "relationshipName": "seccion",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191113185453",
+    "entityTableName": "componente",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
