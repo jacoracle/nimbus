@@ -13,7 +13,7 @@ export class MultipleChoiceComponent implements OnInit {
       {
         pregunta: '¿Cuál es la capital de Querétaro?',
         calificada: false,
-        tipo_pregunta: 'opcionMultiple',
+        tipoPregunta: 'opcionMultiple',
         marcada: false,
         correcta: false,
         respuestas: [
@@ -25,7 +25,7 @@ export class MultipleChoiceComponent implements OnInit {
       {
         pregunta: '¿Cuál es el estado más grande de México?',
         calificada: false,
-        tipo_pregunta: 'opcionMultiple',
+        tipoPregunta: 'opcionMultiple',
         marcada: false,
         correcta: false,
         respuestas: [
@@ -37,7 +37,7 @@ export class MultipleChoiceComponent implements OnInit {
       {
         pregunta: 'La cuidad con más habitantes del país es:',
         calificada: false,
-        tipo_pregunta: 'opcionMultiple',
+        tipoPregunta: 'opcionMultiple',
         marcada: false,
         correcta: false,
         respuestas: [
@@ -49,7 +49,7 @@ export class MultipleChoiceComponent implements OnInit {
       {
         pregunta: 'Los siguientes Estados de la República se encuentran en la frontera con Guatemala:',
         calificada: false,
-        tipo_pregunta: 'opcionMultiple',
+        tipoPregunta: 'opcionMultiple',
         marcada: false,
         correcta: false,
         respuestas: [
@@ -61,7 +61,7 @@ export class MultipleChoiceComponent implements OnInit {
       {
         pregunta: '¿Con qué países tiene frontera México',
         calificada: false,
-        tipo_pregunta: 'opcionMultiple',
+        tipoPregunta: 'opcionMultiple',
         marcada: false,
         correcta: false,
         respuestas: [
