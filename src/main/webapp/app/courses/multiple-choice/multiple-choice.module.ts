@@ -7,6 +7,7 @@ import { multipleChoiceRoute } from './multiple-choice.route';
 
 @NgModule({
   imports: [NimbusSharedModule, RouterModule.forChild(multipleChoiceRoute)],
-  declarations: [MultipleChoiceComponent]
+  declarations: [MultipleChoiceComponent],
+  entryComponents: [MultipleChoiceComponent]
 })
 export class MultipleChoiceModule {}
