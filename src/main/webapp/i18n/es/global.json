@@ -8,7 +8,7 @@
       "courses": {
         "main": "Cursos",
         "multipleChoice": "Opción Múltiple",
-        "multipleAnswer": "Respuesta Múltiple",
+        "practitioner": "Practicario",
         "jhipster-needle-menu-add-entry": "JHipster will add additional courses here (do not translate!)"
       },
       "entities": {

@@ -9,6 +9,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'multiple-choice',
         loadChildren: () => import('./multiple-choice/multiple-choice.module').then(m => m.MultipleChoiceModule)
+      },
+      {
+        path: 'practitioner',
+        loadChildren: () => import('./practitioner/practitioner.module').then(m => m.PractitionerModule)
       }
       /* jhipster-needle-add-courses-route - JHipster will add courses routes here */
     ])
