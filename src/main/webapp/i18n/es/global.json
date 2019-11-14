@@ -5,6 +5,12 @@
     "menu": {
       "home": "Inicio",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+      "courses": {
+        "main": "Cursos",
+        "multipleChoice": "Opción Múltiple",
+        "practitioner": "Practicario",
+        "jhipster-needle-menu-add-entry": "JHipster will add additional courses here (do not translate!)"
+      },
       "entities": {
         "main": "Entidades",
         "tipoComponente": "Tipo Componente",

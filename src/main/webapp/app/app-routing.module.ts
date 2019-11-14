@@ -13,16 +13,24 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
     RouterModule.forRoot(
       [
         {
+          path: 'courses',
+          data: {
+            authorities: ['ROLE_ADMIN']
+          },
+          canActivate: [UserRouteAccessService],
+          loadChildren: () => import('./courses/courses-routing.module').then(m => m.CoursesRoutingModule)
+        },
+        {
+          path: 'account',
+          loadChildren: () => import('./account/account.module').then(m => m.NimbusAccountModule)
+        },
+        {
           path: 'admin',
           data: {
             authorities: ['ROLE_ADMIN']
           },
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule)
-        },
-        {
-          path: 'account',
-          loadChildren: () => import('./account/account.module').then(m => m.NimbusAccountModule)
         },
         ...LAYOUT_ROUTES
       ],
