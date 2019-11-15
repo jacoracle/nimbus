@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CalificacionService } from './../../entities/calificacion/calificacion.service';
+import { ComponenteService } from './../../entities/componente/componente.service';
+import { HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ICalificacion } from 'app/shared/model/calificacion.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'jhi-multiple-choice',
@@ -74,9 +80,9 @@ export class MultipleChoiceComponent implements OnInit {
     mezclar: false
   };
   totalPuntos = 0;
-  calificacion = 0;
+  calificacionActividad = 0;
 
-  constructor() {}
+  constructor(protected calificacionService: CalificacionService, protected componenteService: ComponenteService) {}
 
   ngOnInit() {
     for (let i = 0; i < this.contenido.preguntas.length; i++) {
@@ -130,9 +136,27 @@ export class MultipleChoiceComponent implements OnInit {
       }
       this.contenido.preguntas[i].calificada = true;
     }
-    this.calificacion = Math.round((this.totalPuntos / this.contenido.preguntas.length) * 100) / 10;
+    this.calificacionActividad = Math.round((this.totalPuntos / this.contenido.preguntas.length) * 100) / 10;
     this.contenido.calificada = true;
+    const calificacion = {
+      score: this.calificacionActividad.toString(),
+      monedas: this.calificacionActividad,
+      fecha: moment(),
+      componente: null
+    };
+    this.componenteService.find(1).subscribe(val => {
+      calificacion.componente = val.body;
+      this.subscribeToSaveResponse(this.calificacionService.create(calificacion));
+    });
   }
+
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<ICalificacion>>) {
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
+  }
+
+  protected onSaveSuccess() {}
+
+  protected onSaveError() {}
 
   numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
