@@ -10,6 +10,7 @@
       {
         "lintFile": "./tslint.json"
       }
-    ]
+    ],
+    "no-console": "off"
   }
 }
