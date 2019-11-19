@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
       },
       {
         path: 'practitioner',
-        loadChildren: () => import('./practitioner/practitioner.module').then(m => m.PractitionerModule)
+        loadChildren: () => import('./practitioner/practitioner-routing.module').then(m => m.PractitinerRoutingModule)
       }
       /* jhipster-needle-add-courses-route - JHipster will add courses routes here */
     ])

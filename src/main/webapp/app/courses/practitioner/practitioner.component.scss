@@ -1,0 +1,1154 @@
+/* VARIABLES GENERALES */
+
+/*colores*/
+$materia-titulo: #455f96;
+$practicario-titulo: #434b6a;
+$palabras-general: #565d7a;
+$titulo-actividad: #606681;
+$titulo-dificultad: #313894;
+$contenedor-lista: #313894;
+$numeracion: #f9fafc;
+$estadisticas: #5a63aa;
+$separador-tema: #d2d3db;
+$separador-estadisticas: #caccd5;
+
+$bg-color: #f6f6f6;
+$main-blue: #283d8e;
+$second-blue: #0864fd;
+$separador-color: rgb(209, 209, 209);
+$top-bar-color: white;
+$barra-lateral: #fafafa;
+$contenedor-general: #f6f6f6;
+$seccion-legales-avance: #ffffff;
+$progress-bar: #ececec;
+$barra-progreso: #3d5fff;
+$white: rgb(255, 255, 255);
+
+$contenedor-informacion-actividad: #fff;
+
+/*medidas generales*/
+$width-barra-lateral: 260px;
+$height-barra-superior: 50px;
+$height-seccion-generales: 160px;
+$height-contenedor-temas: calc(100% - 50px); /* 100% - $height-barra-superior*/
+
+/*medidas de icono de dirección*/
+$width-icono-direccion: 15px;
+$height-icono-direccion: 15px;
+
+/*medidas de barra superior*/
+$width-logo-practicario: calc(260px - 20px); /*$width-barra-lateral - 20px*/
+$width-buscador: calc(100% - 260px); /*100% - $width-barra-lateral*/
+
+/*medidas de seccion generales*/
+$height-generales: calc(160px * 0.4 - 20px); /*$height-seccion-generales/2 - 20px*/
+$height-mi-avance: calc(160px * 0.6); /*$height-seccion-generales/2*/
+$height-mi-avance2: calc(160px * 0.4); /*$height-seccion-generales/2*/
+
+/*medidas barras de progreso*/
+$height-barra-progreso-general: 8px;
+$height-barra-progreso-tema: 6px;
+
+/*medidas de iconos monedas y estrellas*/
+$width-icono-estrella-general: 20px;
+$height-icono-estrella-general: 20px;
+$width-icono-moneda-general: 20px;
+$height-icono-moneda-general: 20px;
+$width-icono-estrella-tema: 15px;
+$height-icono-estrella-tema: 15px;
+
+/*medidas de menú*/
+$height-contenido-menu: calc(100% - 228px); /*100% - ($height-seccion-generales + 20 + 48)*/
+$separacion-temas-menu: 15px;
+
+/*medidas del listado de temas*/
+$width-contenedor-general: calc(100% - 260px); /*100% -  $width-barra-lateral*/
+
+/*medidas de icono de logo educare*/
+$width-icono-logo-educare: 15px;
+$height-icono-logo-educare: 15px;
+
+/*medidas de contenedor estadísticas generales*/
+$height-contenedor-estadisticas-generales: calc(100% - 15px); /*100% -  $height-icono-logo-educarel*/
+
+// Editorial
+$f-family: 'Open Sans', sans-serif;
+$f-title: 'Open Sans', sans-serif;
+$f-size: 30px;
+$tx-size: 16px;
+$s-h1: 32px;
+$s-h2: 32px;
+$light: 300;
+$regular: 400;
+$semibold: 600;
+$bold: 700;
+$normal: normal;
+$italic: italic;
+$title-color: #555e77;
+
+$text-blue: #283d8e;
+$text-color: rgb(60, 60, 60);
+
+/* MIXINS */
+/*Import font*/
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url('../../../assets/fonts/Open_Sans/OpenSans-Light.ttf');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url('../../../assets/fonts/Open_Sans/OpenSans-Regular.ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url('../../../assets/fonts/Open_Sans/OpenSans-Italic.ttf');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url('../../../assets/fonts/Open_Sans/OpenSans-SemiBold.ttf');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url('../../../assets/fonts/Open_Sans/OpenSans-Bold.ttf');
+  font-weight: 700;
+}
+
+// Media query
+@mixin smartphone {
+  @media (min-width: 1px) and (max-width: 780px) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media (min-width: 760px) and (max-width: 1140px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 100%) {
+    @content;
+  }
+}
+
+// Font styles
+// @mixin title ($f-size, $semibold, $normal, $f-color) {
+//   font-family: $f-title;
+//   font-size: $f-size;
+//   font-weight: $semibold;
+//   font-style: $normal;
+//   color: $f-color;
+// }
+// @mixin text ($tx-size, $regular, $normal, $tx-color) {
+//   font-family: $f-family;
+//   font-size: $tx-size;
+//   font-weight: $regular;
+//   font-style: $normal;
+//   color: $tx-color;
+// }
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*VARIABLES*/
+$width-cerrar-libro: 20px;
+$height-cerrar-libro: 20px;
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: $bg-color;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+/* Font styles */
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+// h1 {
+//   @include title ($s-h1, $semibold, $normal, $f-color);
+// }
+h2 {
+  position: relative;
+  font-size: 16px;
+  color: $title-color;
+  font-weight: 400;
+}
+// h3 {
+//   @include title ($s-h3, $regular, $normal, $title-color);
+// }
+// h4 {
+//   @include title ($s-h4, $semibold, $normal, $f-color);
+// }
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+// p {
+//   @include text ($tx-size, $regular, $normal, $tx-color);
+//   line-height: 24px;
+// }
+b {
+  font-weight: 700;
+}
+
+#portada-practiraio {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: $bg-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  #cerrar-libro {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../../assets/img/icons/close_icon.svg');
+    background-position: center;
+    background-size: 60%;
+    background-repeat: no-repeat;
+  }
+  .logo-portada {
+    position: relative;
+    width: 277px;
+    height: 70px;
+    background-image: url('../../../assets/img/logo-portada.svg');
+    background-position: center;
+    background-size: 100%;
+  }
+}
+
+#contenido-practiraio {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.centrar-vertical {
+  display: flex;
+  align-items: center;
+}
+
+.centrar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*contenedores*/
+.contenedor-temas {
+  display: flex;
+  height: $height-contenedor-temas;
+  color: $palabras-general;
+}
+
+.icono-izquierda {
+  height: $height-icono-direccion;
+}
+
+/*barra superior*/
+// topbar
+.barra-superior {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $top-bar-color;
+
+  .container {
+    position: relative;
+    width: 94%;
+    // max-width: 1300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .logo-practicario {
+      position: relative;
+      width: 120px;
+      height: 40px;
+      background-image: url('../../../assets/img/logo_home.svg');
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    #cerrar-libro {
+      position: absolute;
+      right: 0px;
+      width: 40px;
+      height: 40px;
+      background-image: url('../../../assets/img/icons/close_icon.svg');
+      background-position: center;
+      background-size: 60%;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.materia-titulo {
+  width: 100%;
+  color: $materia-titulo;
+}
+
+.buscador {
+  width: $width-buscador;
+  text-align: left;
+  position: relative;
+  padding: 10px;
+  display: flex;
+}
+
+.icono-buscar {
+  height: 17px;
+  padding: 5px;
+}
+
+.buscador input {
+  background: none;
+  border: none;
+  padding: 5px 0 0 5px;
+  color: $palabras-general;
+  &:focus {
+    outline: none;
+  }
+}
+
+// Barra lateral SCSS
+// Sidebar
+.barra-lateral {
+  width: $width-barra-lateral;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: $barra-lateral;
+
+  .line-sidebar {
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 139, 208, 1), rgba(0, 169, 188, 1));
+    z-index: 1;
+  }
+
+  #titulo-menu {
+    position: relative;
+    color: $title-color;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 9%;
+    margin-top: 20px;
+  }
+  #contenedor-limpiador {
+    height: 30px;
+    padding: 0 15px 0 15px;
+    transition: 0.4s;
+    .limpiar-seleccion {
+      position: relative;
+      width: 100%;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      transition: 0.4s;
+      cursor: pointer;
+      top: 5px;
+
+      .icono-izquierda {
+        position: relative;
+        width: 10px;
+        height: 10px;
+        background-image: url('../../../assets/img/icons/izquierda.png');
+        background-position: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+      }
+      span {
+        position: relative;
+        color: #798094;
+        font-size: 14px;
+        font-weight: 400;
+        margin-left: 6px;
+      }
+    }
+  }
+
+  .contenido-menu {
+    width: 100%;
+    height: $height-contenido-menu;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .tema {
+      position: relative;
+      width: 100%;
+      height: auto;
+      min-height: 60px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        // background-color: rgba(226, 226, 226,.5);
+      }
+    }
+    .tema-select {
+      background-color: rgba(226, 226, 226, 0.5);
+    }
+  }
+}
+// Checkbox
+.container-label {
+  pointer-events: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+    border-radius: 5px;
+    transition: 0.4s;
+    &:after {
+      content: '';
+      position: absolute;
+      display: none;
+      width: 20px;
+      height: 20px;
+      top: 0;
+      left: 0;
+      background-image: url('../../../assets/img/icons/check.png');
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .icono-tema-checkbox {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    /*background-image: url("../../../assets/img/icons/iconos-temas/icono-tema.png");*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-left: 10px;
+  }
+  .titulo-tema-label {
+    position: relative;
+    font-weight: 400;
+    font-size: 15px;
+    color: $title-color;
+    margin-left: 10px;
+    height: auto;
+    min-height: 20px;
+    width: 60%;
+  }
+}
+/* On mouse-over, add a grey background color */
+.container-label:hover input ~ .checkmark {
+  // box-shadow: 0 6px 12px rgba(0,0,0,0.30);
+}
+/* When the checkbox is checked, add a blue background */
+.container-label input:checked ~ .checkmark {
+  // background-color: $second-blue;
+  background-color: $main-blue;
+}
+/* Show the checkmark when checked */
+.container-label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.legales-avance {
+  background-color: $white;
+  bottom: 0px;
+  position: sticky;
+  // height: $height-seccion-generales;
+  height: 160px;
+  width: 100%;
+
+  .shadow-sidebar {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    transition: 0.4;
+    opacity: 1;
+    /*background: linear-gradient(180deg, rgba(250,250,250,0), rgba(66,77,105,.1) );*/
+  }
+  .boton-generales {
+    // height: $height-generales;
+    height: 60px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: default;
+
+    color: #424d69;
+    text-decoration: none;
+    vertical-align: middle;
+
+    .icon-general {
+      position: relative;
+      width: 21px;
+      height: 21px;
+      background-image: url('../../../assets/img/icons/generales_icn.svg');
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      margin-left: 9%;
+    }
+
+    /*a{
+        color: #424D69;
+        text-decoration: none;
+        vertical-align: middle;
+      }*/
+
+    h2 {
+      position: relative;
+      font-size: 15px;
+      font-weight: 400;
+      /*color: rgb(164, 164, 164);*/
+      margin-left: 10px;
+    }
+  }
+}
+
+.no-shadow {
+  opacity: 0 !important;
+}
+
+/*Avance general*/
+.avance-general {
+  // height: $height-mi-avance;
+  height: 100px;
+  position: relative;
+  width: 100%;
+  border-top: 1px solid silver;
+  background-color: $white;
+  display: flex;
+  justify-content: center;
+  transition: 0.4s;
+  cursor: pointer;
+
+  .indicador-arriba {
+    position: absolute;
+    top: 10px;
+    right: 9%;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../assets/img/icons/arrow_up.svg');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transition: 0.4s;
+  }
+  .contenedor-avance {
+    position: relative;
+    width: 82%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2 {
+      position: relative;
+      width: 100%;
+      height: auto;
+      font-size: 16px;
+      color: $title-color;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .barra-progreso-general {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: flex;
+      align-items: center;
+      .progress {
+        position: relative;
+        width: 82%;
+        height: auto;
+        border-radius: 6px;
+        height: auto;
+        background-color: $progress-bar;
+
+        .progress-bar {
+          border-radius: 4px;
+          transition: 0.4s linear;
+          transition-property: width, background-color;
+          background-color: $barra-progreso;
+          // height: $height-barra-progreso-general;
+          height: 5px;
+          width: 0%;
+          background-color: $second-blue;
+        }
+
+        #progreso-general {
+          height: 4px;
+        }
+      }
+      .porcentaje-general {
+        position: relative;
+        width: 18%;
+        height: auto;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 400;
+        color: $text-blue;
+      }
+    }
+  }
+}
+
+.rotar {
+  transform: rotate(180deg);
+}
+
+.estadisticas-inferior {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  transition: 0.4s;
+
+  #contenedor-estadisticas-generales {
+    position: relative;
+    width: 82%;
+    height: 100%;
+    display: flex;
+    .porcentaje-calificacion-general {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      #numero-calificacion-global {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        text-align: center;
+        margin-top: 4px;
+
+        .numero-calificacion-general {
+          font-size: 18px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          color: $text-blue;
+        }
+      }
+      .titulo-calificacion {
+        position: relative;
+        color: $title-color;
+        font-size: 14px;
+      }
+    }
+    .estrellas-monedas-generales {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      .monedas-generales {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .moneda-general {
+          position: relative;
+          width: 24px;
+          height: 24px;
+          background-image: url('../../../assets/img/icons/moneda.svg');
+          background-position: center;
+          background-size: 100%;
+          background-repeat: no-repeat;
+        }
+        .monedas-globales {
+          position: relative;
+          font-size: 16px;
+          color: $text-blue;
+          font-weight: 400;
+          margin-left: 10px;
+        }
+      }
+      .estrellas-generales {
+        position: relative;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 21px;
+        hr.estrella-global {
+          position: relative;
+          margin-left: 6px;
+          width: 24px;
+          height: 24px;
+          background-position: center;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+}
+
+.estadisticas-alto {
+  height: 85px;
+}
+.avance-alto {
+  height: 75px;
+}
+
+// #porcentaje-calificacion{
+//   position: absolute;
+//   width: 100%;
+//   height: 70%;
+// }
+//
+// #circulo-exterior {
+//   fill: #eaeaea;
+// }
+//
+// #circulo-interior {
+//   fill: #fff;
+// }
+//
+// #calificacion-path {
+//   fill: #2196F3;
+//   stroke: #1565c0;
+//   stroke-width: 10;
+//   stroke-dasharray: 30,15;
+//   stroke-miterlimit: 10;
+//   stroke-linejoin: miter;
+// }
+//
+
+.separador-tema {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: $separador-color;
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.encabezado-tema {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .titulo-tema-listado {
+    position: relative;
+    height: 30px;
+    width: 60%;
+    // left: -15px;
+    @include smartphone {
+      width: 40%;
+    }
+    @include ipad {
+      width: 40%;
+    }
+
+    .icono-tema-listado {
+      position: relative;
+      width: 21px;
+      height: 21px;
+      /*background-image: url("../../../assets/img/icons/iconos-temas/icono-tema.png");*/
+      background-position: center;
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    .titulo-tema {
+      position: relative;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      color: $title-color;
+      font-size: 16px;
+      margin-left: 12px;
+    }
+  }
+
+  .estadisticas-tema {
+    position: relative;
+    width: 40%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @include smartphone {
+      width: 60%;
+    }
+    @include ipad {
+      width: 60%;
+    }
+
+    .calificacion {
+      position: relative;
+      height: auto;
+      width: 110px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+      color: $text-blue;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .calificacion-tema {
+        font-weight: 700;
+        position: relative;
+        font-size: 16px;
+      }
+    }
+
+    .separador-estadisticas {
+      position: relative;
+      width: 2px;
+      height: 20px;
+      background-color: $separador-color;
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+
+    .porcentaje-avance {
+      position: relative;
+      width: 100px;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .progress {
+        height: $height-barra-progreso-tema;
+        background-color: $progress-bar;
+        border-radius: 6px;
+        width: 60px;
+
+        .progress-bar {
+          // height: $height-barra-progreso-tema;
+          height: $height-barra-progreso-general;
+          background-color: $second-blue;
+          width: 0;
+          transition-property: width, background-color;
+          transition: 0.4s linear;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    .porcentaje-tema {
+      position: relative;
+      font-size: 15px;
+      font-weight: 400;
+      color: $text-blue;
+    }
+  }
+}
+
+.nivel-dificultad {
+  font-weight: bold;
+  color: $text-blue;
+  margin-left: 10px;
+}
+
+// lista-actividades contenedor der scss
+.contenedor-general {
+  width: $width-contenedor-general;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+
+  .secciones-temas {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .seccion-tema {
+      position: relative;
+      height: auto;
+      width: 88%;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      @include desktop {
+        max-width: 1100px;
+      }
+    }
+  }
+}
+
+.listado-actividades {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  .informacion-actividad {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 60px;
+    border-radius: 6px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    margin-top: 15px;
+    @include ipad {
+      justify-content: space-between;
+    }
+
+    .titulo-actividad {
+      position: relative;
+      width: 80%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      @include smartphone {
+        width: 60%;
+      }
+      @include ipad {
+        width: 70%;
+      }
+
+      p {
+        position: relative;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        color: $text-color;
+        font-size: 16px;
+        margin-left: 12px;
+        width: 80%;
+        height: auto;
+      }
+
+      .contenedor-numeracion {
+        position: relative;
+        width: 33px;
+        height: 33px;
+        color: white;
+        border-radius: 100%;
+        background-color: $main-blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 20px;
+
+        .numeracion {
+          position: relative;
+          font-size: 14px;
+          color: white;
+        }
+      }
+    }
+
+    .container-estadisticas {
+      position: relative;
+      width: 20%;
+      height: auto;
+      display: flex;
+      justify-content: flex-end;
+      @include smartphone {
+        width: 40%;
+      }
+      @include ipad {
+        width: 30%;
+      }
+
+      .estadisticas-tema {
+        position: relative;
+        width: 160px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 20px;
+
+        .estrellas-generales {
+          position: relative;
+          width: 70px;
+          height: 22px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .separador-estadisticas {
+          position: relative;
+          width: 2px;
+          height: 20px;
+          background-color: $separador-color;
+        }
+        .monedas-actividad {
+          position: relative;
+          width: 65px;
+          height: 22px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          .moneda-actividad {
+            position: relative;
+            width: 21px;
+            height: 21px;
+            background-image: url('../../../assets/img/icons/moneda.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+          }
+          .cantidad-monedas-actividad {
+            position: relative;
+            color: $text-blue;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.estrellas-generales > hr {
+  position: relative;
+  width: 21px;
+  height: 21px;
+  background-image: url(./../../../assets/img/icons/icono-estrella-vacia.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.3s;
+  border: none;
+}
+
+.estrellas-generales > hr.fill {
+  opacity: 1 !important;
+  background-image: url(./../../../assets/img/icons/icono-estrella.png);
+}
+.estrella-global {
+  position: relative;
+  width: 21px;
+  height: 21px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.no-disponible {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.boton-seleccionado {
+  background-color: rgba(226, 226, 226, 0.5);
+}
+
+.contenedor-extras {
+  position: relative;
+  height: auto;
+  width: 88%;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+#contenedor-generales {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .icono-generales {
+    background-image: url(../../../assets/img/icons/generales_icn.svg);
+  }
+
+  /*a{
+    color: #424D69;
+    text-decoration: none;
+    vertical-align: middle;
+  }*/
+}
+
+.container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
