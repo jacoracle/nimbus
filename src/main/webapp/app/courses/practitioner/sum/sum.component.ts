@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CalificacionService } from './../../../entities/calificacion/calificacion.service';
+import { ComponenteService } from './../../../entities/componente/componente.service';
+import { HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ICalificacion } from 'app/shared/model/calificacion.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'jhi-sum',
@@ -34,12 +40,12 @@ export class SumComponent implements OnInit {
 	cantidadDeDistractores = 3;
 	objectKeys = Object.keys;
 	respuestasCorrectas = 0;
-	calificacion = 0;
+	calificacionActividad = 0;
 	// Paginación
 	paginas = {};
 	paginaActiva = -1;
 
-  constructor() { }
+  constructor(protected calificacionService: CalificacionService, protected componenteService: ComponenteService) { }
 
   ngOnInit() {
 	this.crearPaginacion(this.cantidadDeEjercicios)
@@ -256,14 +262,14 @@ export class SumComponent implements OnInit {
 			this.ejercicios[this.paginaActiva].calificada = true;
 			let respuestaRevisar;
 			// Normal
-			if (this.ejercicios[this.paginaActiva].tipo == "nom") {
+			if (this.ejercicios[this.paginaActiva].tipo === "nom") {
 				respuestaRevisar = this.ejercicios[this.paginaActiva].resultado;
 			}
 			// invertida
 			else {
 				respuestaRevisar = this.ejercicios[this.paginaActiva].operandos[this.ejercicios[this.paginaActiva].operandos.length - 1];
 			}
-			if (this.ejercicios[this.paginaActiva].respuesta == respuestaRevisar) {
+			if (this.ejercicios[this.paginaActiva].respuesta === respuestaRevisar) {
 				correcta = true;
 			}
 		}
@@ -295,8 +301,27 @@ export class SumComponent implements OnInit {
 			}
 		}
 		if(!ejerciciosSinResponder){
-			this.calificacion = this.respuestasCorrectas / this.cantidadDeEjercicios * 10;
+			this.calificacionActividad = this.respuestasCorrectas / this.cantidadDeEjercicios * 10;
+			// Registrar calificación
+			const calificacion = {
+				score: this.calificacionActividad.toString(),
+				monedas: this.calificacionActividad,
+				fecha: moment(),
+				componente: null
+			};
+			this.componenteService.find(2).subscribe(val => {
+				calificacion.componente = val.body;
+				this.subscribeToSaveResponse(this.calificacionService.create(calificacion));
+			});
 		}
 	}
+
+	protected subscribeToSaveResponse(result: Observable<HttpResponse<ICalificacion>>) {
+		result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
+	}
+
+	protected onSaveSuccess() {}
+
+	protected onSaveError() {}
 
 }
