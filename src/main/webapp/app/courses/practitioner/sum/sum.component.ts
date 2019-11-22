@@ -163,7 +163,6 @@ export class SumComponent implements OnInit {
 				this.ejercicios[i]["respuestas"] = this.generarDistractores(numeroRango, this.cantidadDeDistractores, this.params.drangoDeDistractores);
 			}
     }
-    console.log(this.ejercicios);
   }
 
 	crearPaginacion(cantidadDeEjercicios) {
@@ -230,12 +229,10 @@ export class SumComponent implements OnInit {
   }
 
 	calificar() {
-		console.log("Calificar ejercicio " + this.paginaActiva);
 		let correcta;
 		let camposVacios = false;
 		// Respuesta única
 		if(this.ejercicios[this.paginaActiva].tipo === "nru" || this.ejercicios[this.paginaActiva].tipo === "iru") {
-			console.log("Respuesta única");
 			// Verificar campos vacíos
 			for (let i = 0; i < this.ejercicios[this.paginaActiva].modeloResultado.length; i++) {
 				if(this.ejercicios[this.paginaActiva].modeloResultado[i] === "" || this.ejercicios[this.paginaActiva].modeloResultado[i] === undefined) {
@@ -243,7 +240,6 @@ export class SumComponent implements OnInit {
 				}
 			}
 			if(!camposVacios) {
-				console.log("No hay campos vacíos");
 				this.ejercicios[this.paginaActiva].calificada = true;
 				// Respuesta única
 				if (this.ejercicios[this.paginaActiva]) {
@@ -253,9 +249,6 @@ export class SumComponent implements OnInit {
 				else {
 					correcta = this.ejercicios[this.paginaActiva].respuesta === this.ejercicios[this.paginaActiva].resultado;
 				}
-			}
-			else{
-				console.log("Hay campos vacíos");
 			}
 		}
 		// Opción múltiple
@@ -275,15 +268,9 @@ export class SumComponent implements OnInit {
 			}
 		}
 		// Correcta
-		console.log("Correcta: " + correcta);
 		if (!camposVacios) {
-			console.log("No hay campos vacíos, agregar a respuestas correctas")
 			if (correcta) {
-				console.log("Es correcta");
 				this.respuestasCorrectas = this.respuestasCorrectas + 1;
-			}
-			else {
-				console.log("No es correcta");
 			}
 			this.ejercicioSinResponder();
 		}
