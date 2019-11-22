@@ -7,49 +7,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SumComponent implements OnInit {
 
-  info = {
-		leyenda: "Suma",
-		indicacion: {
-			nru: "Realiza la siguiente suma:",
-			nom: "Selecciona el resultado de la siguiente suma:",
-			iru: "Escribe la cantidad necesaria para que la operación sea correcta.",
-			iom: "Selecciona la cantidad necesaria para que la operación sea correcta."
-		},
-		tipo: "a"
-  };
-  params = {
-    operandos: 2,
-    resultadoMaximo: 33,
-    decimales: 0,
-    decimalMaximo: 0,
-    drangoDeDistractores: 5,
-    multiplosDeCien: false
-  };
-  cantidadDeEjercicios = 5;
-  tiposOperacion = [];
-  decimalesMaximos = this.params.decimalMaximo;
-  ejercicios = [];
-  cantidadDeDistractores = 3;
-  objectKeys = Object.keys;
+	// Parámetros
+	info = {
+	leyenda: "Suma",
+	indicacion: {
+	nru: "Realiza la siguiente suma:",
+	nom: "Selecciona el resultado de la siguiente suma:",
+	iru: "Escribe la cantidad necesaria para que la operación sea correcta.",
+	iom: "Selecciona la cantidad necesaria para que la operación sea correcta."
+	},
+	tipo: "a"
+	};
+	params = {
+		operandos: 2,
+		resultadoMaximo: 33,
+		decimales: 0,
+		decimalMaximo: 0,
+		drangoDeDistractores: 5,
+		multiplosDeCien: false
+	};
+	cantidadDeEjercicios = 5;
+	// Sumas
+	tiposOperacion = [];
+	decimalesMaximos = this.params.decimalMaximo;
+	ejercicios = [];
+	cantidadDeDistractores = 3;
+	objectKeys = Object.keys;
+	respuestasCorrectas = 0;
+	calificacion = 0;
+	// Paginación
+	paginas = {};
+	paginaActiva = -1;
 
   constructor() { }
 
   ngOnInit() {
-    if(this.params.multiplosDeCien){
-      // Definir tipos de suma (tipo de actividad interactiva)
-      this.tiposOperacion = [
-        "nru",	// Normal - Respuesta única
-        "iru", 	// Invertida - Respuesta única
-      ];
-    }
-    else{
-      this.tiposOperacion = [
-        "nru",	// Normal - Respuesta única
-        "nom",	// Normal - Opción múltiple
-        "iru", 	// Invertida - Respuesta única
-        "iom"	// Invertida - Opción múltiple
-      ];
-    }
+	this.crearPaginacion(this.cantidadDeEjercicios)
+	if(this.params.multiplosDeCien){
+		// Definir tipos de suma (tipo de actividad interactiva)
+		this.tiposOperacion = [
+		"nru",	// Normal - Respuesta única
+		"iru", 	// Invertida - Respuesta única
+		];
+	}
+	else{
+		this.tiposOperacion = [
+		"nru",	// Normal - Respuesta única
+		"nom",	// Normal - Opción múltiple
+		"iru", 	// Invertida - Respuesta única
+		"iom"	// Invertida - Opción múltiple
+		];
+	}
 
     for(let i = 0; i < this.cantidadDeEjercicios; i++){
 			// Tipo de suma aleatorio
@@ -158,6 +166,18 @@ export class SumComponent implements OnInit {
     console.log(this.ejercicios);
   }
 
+	crearPaginacion(cantidadDeEjercicios) {
+		for (let i = 0; i < cantidadDeEjercicios; i++) {
+			this.paginas[i] = "";
+			this.ejercicios[i] = {};
+		}
+		this.paginaActiva = 0;
+	}
+
+	cambiarPagina = function(pagina) {
+		this.paginaActiva = pagina;
+	}
+
   numeroAleatorio(min: number, max: number, decimales: number, negativos: number) {
     let valor = 1;
     for (let i = 0; i < decimales; i++) {
@@ -208,4 +228,88 @@ export class SumComponent implements OnInit {
     }
     return objetoRespuestas;
   }
+
+	calificar() {
+		console.log("Calificar ejercicio " + this.paginaActiva);
+		let correcta;
+		let camposVacios = false;
+		// Respuesta única
+		if(this.ejercicios[this.paginaActiva].tipo === "nru" || this.ejercicios[this.paginaActiva].tipo === "iru") {
+			console.log("Respuesta única");
+			// Verificar campos vacíos
+			for (let i = 0; i < this.ejercicios[this.paginaActiva].modeloResultado.length; i++) {
+				if(this.ejercicios[this.paginaActiva].modeloResultado[i] === "" || this.ejercicios[this.paginaActiva].modeloResultado[i] === undefined) {
+					camposVacios = true;
+				}
+			}
+			if(!camposVacios) {
+				console.log("No hay campos vacíos");
+				this.ejercicios[this.paginaActiva].calificada = true;
+				// Respuesta única
+				if (this.ejercicios[this.paginaActiva]) {
+					correcta = this.compararArreglosRespuestas(this.ejercicios[this.paginaActiva].modeloResultado, this.ejercicios[this.paginaActiva].digitosResultado);
+				}
+				// Opción múltiple
+				else {
+					correcta = this.ejercicios[this.paginaActiva].respuesta === this.ejercicios[this.paginaActiva].resultado;
+				}
+			}
+			else{
+				console.log("Hay campos vacíos");
+			}
+		}
+		// Opción múltiple
+		else {
+			this.ejercicios[this.paginaActiva].calificada = true;
+			let respuestaRevisar;
+			// Normal
+			if (this.ejercicios[this.paginaActiva].tipo == "nom") {
+				respuestaRevisar = this.ejercicios[this.paginaActiva].resultado;
+			}
+			// invertida
+			else {
+				respuestaRevisar = this.ejercicios[this.paginaActiva].operandos[this.ejercicios[this.paginaActiva].operandos.length - 1];
+			}
+			if (this.ejercicios[this.paginaActiva].respuesta == respuestaRevisar) {
+				correcta = true;
+			}
+		}
+		// Correcta
+		console.log("Correcta: " + correcta);
+		if (!camposVacios) {
+			console.log("No hay campos vacíos, agregar a respuestas correctas")
+			if (correcta) {
+				console.log("Es correcta");
+				this.respuestasCorrectas = this.respuestasCorrectas + 1;
+			}
+			else {
+				console.log("No es correcta");
+			}
+			this.ejercicioSinResponder();
+		}
+	}
+
+	compararArreglosRespuestas(respuestas, resultados) {
+		let iguales = true;
+		for (let i = 0; i < resultados.length; i++) {
+			if (respuestas[i] !== Number(resultados[i])) {
+				iguales = false;
+			}
+		}
+		return iguales;
+	}
+
+	ejercicioSinResponder = function() {
+		let ejerciciosSinResponder = false;
+		for(let i = 0; i < this.cantidadDeEjercicios; i++) {
+			if(this.ejercicios[i].calificada === false) {
+				ejerciciosSinResponder = true;
+				break;
+			}
+		}
+		if(!ejerciciosSinResponder){
+			this.calificacion = this.respuestasCorrectas / this.cantidadDeEjercicios * 10;
+		}
+	}
+
 }
