@@ -1,15 +1,22 @@
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-md-10">
-          <h3>{{contenido.indicacion}}</h3>
-        </div>
-      <div class="col-md-10">
-        <div *ngFor="let pregunta of contenido.preguntas; let i = index" class="form-row">
-            <div class="form-group col-md-12">
-              <p><strong>{{i + 1}}. {{pregunta.pregunta}}</strong></p>
-            </div>  
-            <div class="form-group col-md-4" *ngFor="let respuesta of pregunta.respuestas">
-              <button 
+<div class="row-master-mc">
+
+  <div class="row-title-mc">
+    <h3>{{contenido.indicacion}}</h3>
+  </div>
+
+    <div class="row-mc">
+
+      <div class="row-act-mc">
+        <div *ngFor="let pregunta of contenido.preguntas; let i = index" class="">
+            <div class="row-question-mc">
+              <p>{{i + 1}}. {{pregunta.pregunta}}</p>
+            </div>
+
+            <div class="row-answer-mc">
+
+              <div *ngFor="let respuesta of pregunta.respuestas">
+              <button
+
               type="button" class="button btn btn-primary"
               (click)="seleccionar(pregunta.respuestas, respuesta)"
               [ngClass]="{
@@ -20,21 +27,30 @@
               [disabled]="contenido.calificada">
                 {{respuesta.respuesta}}
               </button>
+              </div>
+
             </div>
-  
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row-footer-mc">
+
+      <button (click)="calificar()" class="btn btn-primary button" *ngIf="!contenido.calificada">
+        Enviar
+      </button>
+
+      <div class="col-calif-mc" *ngIf="contenido.calificada">
+
+        <div class="img-calif">
+          <h4>Calificación:</h4>
+          <span> {{calificacionActividad}} </span>
         </div>
       </div>
+
     </div>
-    <div class="row justify-content-md-center">
-      <div class="col-md-10" *ngIf="!contenido.calificada">
-        <div class="form-group">
-          <button (click)="calificar()" class="btn btn-primary button">
-            Enviar
-          </button>
-        </div>    
-      </div>
-      <div class="col-md-10" *ngIf="contenido.calificada">
-        <h4>Calificación: {{calificacionActividad}}</h4>
-      </div>
-    </div>
-  </div>
+
+</div>
