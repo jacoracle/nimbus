@@ -1,0 +1,22 @@
+<!--Ejercicio Start-->
+Calificación: {{calificacionActividad}}
+<div></div>
+<div *ngFor="let ejercicio of ejercicios; index as indiceEjercicio">
+	<div class="ejercicio p95 centrar desarrollo centrar-contenido container" [hidden]="paginaActiva != indiceEjercicio" style="height: 500px !important;">
+        <jhi-sum [sumIndex]="indiceEjercicio" (ejercicioCalificado)='registrarCalificacion($event)'></jhi-sum>
+	</div>
+</div>
+<!--Paginación-->
+<div class="paginas centrar centrar-contenido">
+    <div class="contenedor-barra-inferior">
+        <ul class="listado-paginas" id="paginacion">
+            <li *ngFor="let pagina of paginas; index as indicePagina;" (click)="cambiarPagina(indicePagina)" class="pagina">
+                <div class="pagina-numero">
+                    {{indicePagina + 1}}
+                </div>
+            </li>            
+        </ul>
+    </div>
+</div>
+        
+<!--Ejercicio End-->
