@@ -41,13 +41,17 @@ export class ComponentComponent implements OnInit {
         this.ejercicioSinResponder();
     }
     */
-   public registrarCalificacion(calificacionEjercicio: any): void {
-       console.log(calificacionEjercicio);
-   }
+    public registrarCalificacion(infoEjercicio: any): void {
+        this.ejercicios[infoEjercicio.indice].calificada = true;
+        this.ejercicios[infoEjercicio.indice].calificacion += infoEjercicio.calificacion;
+        this.ejercicioSinResponder();
+    }
 
     crearPaginacion(cantidadDeEjercicios) {
         for (let i = 0; i < cantidadDeEjercicios; i++) {
-            this.paginas[i] = "";
+            this.paginas[i] = {
+                seleccionada: i === 0 ? true : false
+            };
             this.ejercicios[i] = {
                 calificada: false,
                 calificacion: 0
@@ -57,6 +61,10 @@ export class ComponentComponent implements OnInit {
     }
 
     cambiarPagina = function(pagina) {
+        for (let i = 0; i < this.cantidadDeEjercicios; i++) {
+            this.paginas[i].seleccionada = false;
+        }
+        this.paginas[pagina].seleccionada = true;
         this.paginaActiva = pagina;
     }
 
@@ -65,12 +73,17 @@ export class ComponentComponent implements OnInit {
         let ejerciciosSinResponder = false;
         for(let i = 0; i < this.ejercicios.length; i++) {
             if(this.ejercicios[i].calificada === false) {
+                this.cambiarPagina(i);
                 ejerciciosSinResponder = true;
                 break;
             }
         }
         if(!ejerciciosSinResponder){
+            console.log("No hay ejercios sin responder");
             this.calcularCalificacion();
+        }
+        else{
+            console.log("Hay ejercios sin responder");
         }
     }
 
@@ -80,6 +93,7 @@ export class ComponentComponent implements OnInit {
             aciertos += this.ejercicios[i].calificacion;
         }
         this.calificacionActividad = aciertos / this.cantidadDeEjercicios * 10;
+        console.log("Calificación: " + this.calificacionActividad);
         // Registrar calificación
         const calificacion = {
             score: this.calificacionActividad.toString(),

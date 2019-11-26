@@ -10,7 +10,15 @@ Calificación: {{calificacionActividad}}
 <div class="paginas centrar centrar-contenido">
     <div class="contenedor-barra-inferior">
         <ul class="listado-paginas" id="paginacion">
-            <li *ngFor="let pagina of paginas; index as indicePagina;" (click)="cambiarPagina(indicePagina)" class="pagina">
+            <li *ngFor="let pagina of paginas; index as indicePagina;" 
+                (click)="cambiarPagina(indicePagina)" 
+                class="pagina"
+                [ngClass]="{
+                    'bien':ejercicios[indicePagina].calificada && ejercicios[indicePagina].calificacion === 10,
+                    'mal':ejercicios[indicePagina].calificada && ejercicios[indicePagina].calificacion === 0,
+                    'medio_punto':ejercicios[indicePagina].calificada && ejercicios[indicePagina].calificacion < 10 && ejercicios[indicePagina].calificacion > 10,
+                    'activa': pagina.seleccionada
+                }">
                 <div class="pagina-numero">
                     {{indicePagina + 1}}
                 </div>
