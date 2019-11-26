@@ -3,6 +3,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@a
 
 import { PractitionerComponent } from './practitioner.component';
 import { SumComponent } from './sum/sum.component';
+import { ComponentComponent } from './../component/component.component';
 
 @Injectable({ providedIn: 'root' })
 export class PractitionerResolve implements Resolve<any> {
@@ -26,6 +27,13 @@ export const practitionerRoute: Routes = [
     component: SumComponent,
     data: {
       pageTitle: 'Suma'
+    }
+  },
+  {
+    path: 'component',
+    component: ComponentComponent,
+    data: {
+      pageTitle: 'Component'
     }
   }
 ];
