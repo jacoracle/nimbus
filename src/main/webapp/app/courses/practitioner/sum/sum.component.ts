@@ -30,7 +30,6 @@ export class SumComponent implements OnInit {
 	// Sumas
 	ejercicio;
 	digitosResultado;
-	@ViewChild('focus', {static: false}) focus: ElementRef;
 	modeloResultado;
 	tiposOperacion = [];
 	decimalesMaximos = this.params.decimalMaximo;
@@ -171,12 +170,13 @@ export class SumComponent implements OnInit {
 	}
 
 	cambiarFocus() {
-		console.log("Focus");
-		console.log(this.modeloResultado);
 		for(let i = 0; i < this.modeloResultado.length; i++){
 			for(let j = 0; j < this.modeloResultado.length; j++){
 				if(this.modeloResultado[j].campo === i && this.modeloResultado[j].valor === ""){
-					console.log("focus en " + j);
+					console.log("focus en " + j);					
+					//this.modeloResultado[j].nativeElement.focus();
+					console.log(this.modeloResultado[j]);
+					console.log(this.modeloResultado[j].nativeElement);
 					break;
 				}
 			}
@@ -250,7 +250,7 @@ export class SumComponent implements OnInit {
 				this.ejercicio.calificada = true;
 				// Respuesta única
 				if (this.ejercicio) {
-					correcta = this.compararArreglosRespuestas(this.modeloResultado.valor, this.digitosResultado);
+					correcta = this.compararArreglosRespuestas(this.modeloResultado, this.digitosResultado);
 				}
 				// Opción múltiple
 				else {
