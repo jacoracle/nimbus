@@ -36,6 +36,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
           path: 'practitioner',
           loadChildren: () => import('./courses/practitioner/practitioner-routing.module').then(m => m.PractitinerRoutingModule)
         },
+        {
+          path: 'multiple-choice',
+          loadChildren: () => import('./courses/multiple-choice/multiple-choice.module').then(m => m.MultipleChoiceModule)
+        },
         ...LAYOUT_ROUTES
       ],
       { enableTracing: DEBUG_INFO_ENABLED }

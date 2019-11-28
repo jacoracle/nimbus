@@ -1,7 +1,7 @@
 <div class="container">
     <div *ngFor="let course of courses; index as courseIndex" 
         style="border: 1px solid black; float: left; width: 100px; height: 100px;"         
-        [routerLink]="['/practitioner']">
+        routerLink="{{'/' + course.route}}">
         <span>{{course.name}}</span>
         <span>{{course.author}}</span>
         <span>{{course.version}}</span>
