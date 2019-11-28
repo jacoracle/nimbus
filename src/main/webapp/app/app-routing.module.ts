@@ -5,6 +5,7 @@ import { navbarRoute } from './layouts/navbar/navbar.route';
 import { DEBUG_INFO_ENABLED } from 'app/app.constants';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
+import { MainComponent } from './courses/main/main.component';
 
 const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 
@@ -13,12 +14,11 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
     RouterModule.forRoot(
       [
         {
-          path: 'courses',
+          path: 'main',
           data: {
             authorities: ['ROLE_ADMIN']
           },
-          canActivate: [UserRouteAccessService],
-          loadChildren: () => import('./courses/courses-routing.module').then(m => m.CoursesRoutingModule)
+          component: MainComponent
         },
         {
           path: 'account',
@@ -31,6 +31,10 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
           },
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule)
+        },
+        {
+          path: 'practitioner',
+          loadChildren: () => import('./courses/practitioner/practitioner-routing.module').then(m => m.PractitinerRoutingModule)
         },
         ...LAYOUT_ROUTES
       ],

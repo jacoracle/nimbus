@@ -18,12 +18,6 @@ export class ComponentComponent implements OnInit {
     paginas = [];
     paginaActiva = -1;    
     calificacionActividad = 0;
-    /*
-    @Input() ejercicioCalificado = {
-        calificada: false,
-        calificacion: 0
-    };
-    */
 
     constructor(protected calificacionService: CalificacionService, protected componenteService: ComponenteService) { }
 
@@ -31,16 +25,6 @@ export class ComponentComponent implements OnInit {
         this.crearPaginacion(this.cantidadDeEjercicios)
     }
 
-    /*
-    @Input('ejercicioCalificado')
-    set ejercicioCalificado(val: any) {
-        console.log("Se recibe valor");
-        console.log(val.valificacion);
-        this.ejercicios[val.indice].calificada;
-        this.ejercicios[val.indice].calificadacion += val.calificacion;
-        this.ejercicioSinResponder();
-    }
-    */
     public registrarCalificacion(infoEjercicio: any): void {
         this.ejercicios[infoEjercicio.indice].calificada = true;
         this.ejercicios[infoEjercicio.indice].calificacion += infoEjercicio.calificacion;
