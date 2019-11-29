@@ -4,6 +4,42 @@
 /* ==========================================================================
 Navbar
 ========================================================================== */
+// Colors
+$main-blue: #273354;
+$bg-color: #fbfbfb;
+$bg-color2: white;
+$secondary-color: #b39452;
+$white-bg: #f8fafc;
+$silver-blue: #e9edf0;
+$blue: #076afc;
+$color-text: rgb(102, 102, 102);
+$icon-color: #55559d;
+$light-purple: #d1d1e5;
+
+$darkblue: darken($main-blue, 10%);
+$light-purple1: lighten($light-purple, 8%);
+
+// Media query
+@mixin smartphone {
+  @media (min-width: 1px) and (max-width: 760px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media (min-width: 600px) and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 900px) and (max-width: 1200px) {
+    @content;
+  }
+}
 
 .navbar-version {
   font-size: 0.65em;
@@ -16,8 +52,6 @@ Navbar
 }
 
 .navbar {
-  padding: 0.2rem 1rem;
-
   ul.navbar-nav {
     .nav-item {
       margin-left: 0.5em;
@@ -32,11 +66,138 @@ Navbar
 /* ==========================================================================
 Logo styles
 ========================================================================== */
-.logo-img {
-  height: 45px;
-  width: 45px;
-  display: inline-block;
-  vertical-align: middle;
-  background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
-  background-size: contain;
+
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  min-height: 60px;
+  padding: 0 !important;
+  transition: 0.3s;
+  background-color: white;
+  border-bottom: 1px solid $light-purple;
+
+  .col-navbar {
+    position: relative;
+    width: 90%;
+    height: auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: 0.3s;
+
+    .navbar-logotipo {
+      position: relative;
+      width: 20%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding: 0 !important;
+      margin-right: 0 !important;
+
+      .logo-img {
+        height: 45px;
+        width: 45px;
+        display: inline-block;
+        vertical-align: middle;
+        background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
+        background-size: contain;
+      }
+
+      .navbar-title {
+        position: relative;
+        margin-left: 10px;
+
+        font-weight: 600;
+        font-size: 18px;
+        color: $main-blue;
+        @include smartphone {
+          display: none;
+        }
+      }
+    }
+
+    .navbar-collapse {
+      position: relative;
+      width: 80%;
+      height: auto;
+      min-height: 60px;
+      padding: 0 !important;
+      justify-content: flex-end !important;
+      align-items: center;
+    }
+    .show {
+      display: flex;
+      justify-content: flex-start !important;
+      align-items: center;
+    }
+  }
+}
+.ml-auto,
+.mx-auto {
+  margin-left: 0 !important;
+}
+
+.navbar-dark .navbar-toggler {
+  color: rgba(255, 255, 255, 0.5);
+  border-color: none;
+}
+.navbar-toggler {
+  display: none;
+  position: absolute !important;
+  padding: 0 !important;
+  font-size: 28px !important;
+  height: 40px !important;
+  width: 40px !important;
+  right: 0px !important;
+
+  justify-content: center;
+  align-items: center;
+  line-height: !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: $main-blue;
+  @include smartphone {
+    display: flex !important;
+    z-index: 2;
+  }
+}
+
+a.nav-link {
+  color: $main-blue;
+
+  span {
+    .ng-fa-icon {
+      color: $icon-color;
+      margin-right: 5px;
+    }
+  }
+}
+
+.dropdown-menu {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start !important;
+}
+.dropdown-item {
+  padding: 0.25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: $main-blue;
+  white-space: nowrap;
+}
+
+.user-icn {
+  position: relative;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: $light-purple1;
+  border-radius: 100%;
 }
