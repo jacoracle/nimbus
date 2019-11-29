@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, ElementRef, QueryList, ViewChildren, AfterViewInit, ViewChild } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -6,18 +6,18 @@ import { EventEmitter } from '@angular/core';
   templateUrl: './sum.component.html',
   styleUrls: ['./sum.component.scss']
 })
-export class SumComponent implements OnInit {
+export class SumComponent implements OnInit, AfterViewInit {
 
 	// Parámetros
 	info = {
-	leyenda: "Suma",
-	indicacion: {
-	nru: "Realiza la siguiente suma:",
-	nom: "Selecciona el resultado de la siguiente suma:",
-	iru: "Escribe la cantidad necesaria para que la operación sea correcta.",
-	iom: "Selecciona la cantidad necesaria para que la operación sea correcta."
-	},
-	tipo: "a"
+		leyenda: "Suma",
+		indicacion: {
+			nru: "Realiza la siguiente suma:",
+			nom: "Selecciona el resultado de la siguiente suma:",
+			iru: "Escribe la cantidad necesaria para que la operación sea correcta.",
+			iom: "Selecciona la cantidad necesaria para que la operación sea correcta."
+		},
+		tipo: "a"
 	};
 	params = {
 		operandos: 2,
@@ -26,11 +26,12 @@ export class SumComponent implements OnInit {
 		decimalMaximo: 0,
 		drangoDeDistractores: 5,
 		multiplosDeCien: false
-	}
+	};
 	// Sumas
 	ejercicio;
 	digitosResultado;
 	modeloResultado;
+	@ViewChildren('focus') focus: QueryList<ElementRef>;
 	tiposOperacion = [];
 	decimalesMaximos = this.params.decimalMaximo;
 	cantidadDeDistractores = 3;
@@ -40,8 +41,23 @@ export class SumComponent implements OnInit {
 	@Input() sumIndex;
 	@Output()
 	ejercicioCalificado: EventEmitter<any> = new EventEmitter<any>();
+	@ViewChild('search', {static: false}) searchElement: ElementRef;
 
   constructor() { }
+
+	showSearch(){
+		setTimeout(()=>{ // this will make the execution after the above boolean has changed		
+			this.focus.forEach(function(value){
+				console.log(value);
+			})
+			// this.focus.forEach((element, index) => console.log(element));
+		/*
+		console.log(this.searchElement);
+		console.log(this.searchElement.nativeElement);
+		console.log(this.searchElement.nativeElement.focus());
+		*/
+	},0);  
+	}
 
   ngOnInit() {
 	if(this.params.multiplosDeCien){
@@ -169,14 +185,31 @@ export class SumComponent implements OnInit {
 		}
 	}
 
+	ngAfterViewInit()
+	{
+		this.focus.changes.subscribe(()=>{
+			console.log("changes");
+			console.log(this);
+			//this.focus.last.nativeElement.focus();
+		})
+	}
+
 	cambiarFocus() {
+		/*
+		this.focus.forEach(function(value){
+			console.log(value);
+		})
+		*/
 		for(let i = 0; i < this.modeloResultado.length; i++){
 			for(let j = 0; j < this.modeloResultado.length; j++){
 				if(this.modeloResultado[j].campo === i && this.modeloResultado[j].valor === ""){
-					console.log("focus en " + j);					
-					//this.modeloResultado[j].nativeElement.focus();
+					console.log("focus en " + j);
 					console.log(this.modeloResultado[j]);
-					console.log(this.modeloResultado[j].nativeElement);
+					//console.log(this.modeloResultado[j].nativeElement);
+					setTimeout(()=>{ // this will make the execution after the above boolean has changed
+						//this.modeloResultado[j].nativeElement.focus();
+						this.focus.forEach((element, index) => index === j ? element.nativeElement.focus() : false );
+					},1000); 
 					break;
 				}
 			}
@@ -296,7 +329,7 @@ export class SumComponent implements OnInit {
 	compararArreglosRespuestas(respuestas, resultados) {
 		let iguales = true;
 		for (let i = 0; i < resultados.length; i++) {
-			if (respuestas[i] !== Number(resultados[i])) {
+			if (respuestas[i].valor !== Number(resultados[i])) {
 				iguales = false;
 			}
 		}

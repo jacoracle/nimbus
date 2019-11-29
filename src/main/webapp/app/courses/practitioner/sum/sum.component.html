@@ -1,6 +1,13 @@
 <!--Ejercicio Start-->
 Suma número: {{sumIndex}}
 Correcta: {{respuestaCorrecta}}
+<div >
+	<input #search type="text"/>
+	<input #search type="text"/>
+	<input #search type="text"/>
+	<input #search type="text"/>
+	<button (click) ="showSearch()">Show Search</button>
+</div>
 <div class="ejercicio p95 centrar desarrollo centrar-contenido container" *ngIf="paginaActiva == indiceEjercicio" style="height: 500px !important;">
 	<div class="operacion-vertical" style="width: 30%;">
 		<p class="correctaTexto retro">Tu respuesta:</p>
@@ -27,6 +34,7 @@ Correcta: {{respuestaCorrecta}}
 							class="resultadoi digito-resultado"
 							[(ngModel)]="modeloResultado[idigito].valor"
 							(ngModelChange)='cambiarFocus()'
+							#focus
 						>
 						<!--Campos para coma o punto-->
 						<input 
@@ -56,6 +64,7 @@ Correcta: {{respuestaCorrecta}}
 						class="resultadoi digito-resultado"
 						[(ngModel)]="modeloResultado[idigito].valor"
 						(ngModelChange)='cambiarFocus()'
+						#focus
 					>
 					<!--Campos para coma o punto-->
 					<input 
