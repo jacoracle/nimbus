@@ -14,9 +14,10 @@ $silver-blue: #e9edf0;
 $blue: #076afc;
 $color-text: rgb(102, 102, 102);
 $icon-color: #55559d;
+$light-purple: #d1d1e5;
 
 $darkblue: darken($main-blue, 10%);
-$lightblue: lighten($main-blue, 3%);
+$light-purple1: lighten($light-purple, 8%);
 
 // Media query
 @mixin smartphone {
@@ -77,7 +78,7 @@ Logo styles
   padding: 0 !important;
   transition: 0.3s;
   background-color: white;
-  border-bottom: 1px solid #d1d1e5;
+  border-bottom: 1px solid $light-purple;
 
   .col-navbar {
     position: relative;
@@ -189,4 +190,14 @@ a.nav-link {
   font-weight: 400;
   color: $main-blue;
   white-space: nowrap;
+}
+
+.user-icn {
+  position: relative;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: $light-purple1;
+  border-radius: 100%;
 }

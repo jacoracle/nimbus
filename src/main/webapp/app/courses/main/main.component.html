@@ -1,12 +1,35 @@
-<div class="container">
-    <div *ngFor="let course of courses; index as courseIndex" 
-        style="border: 1px solid black; float: left; width: 100px; height: 100px;"         
-        routerLink="{{'/' + course.route}}">
-        <span>{{course.name}}</span>
-        <span>{{course.author}}</span>
-        <span>{{course.version}}</span>
-        <span>{{course.cover}}</span>
-        <span>{{course.route}}</span>
-        <img src="{{'./../../../assets/' + course.cover + '.png'}}">
+<div class=" container-view">
+  <div class="col-container-view">
+
+
+    <div *ngFor="let course of courses; index as courseIndex" class="cover-view" routerLink="{{'/' + course.route}}">
+      <div class="cover-row">
+
+        <img src="./../../../assets/img/portada1.png" *ngIf="course.route == 'multiple-choice'">
+        <img src="./../../../assets/img/portada2.png" *ngIf="course.route == 'practitioner'">
+
+      </div>
+
+      <div class="cover-row">
+        <div class="item-1">
+          <span class="cover-t1">Curso</span>
+          <span class="cover-t2">{{course.name}}</span>
+          <!-- <span>{{course.author}}</span> -->
+          <span class="cover-version">V. {{course.version}}</span>
+          <!-- <span>{{course.cover}}</span> -->
+          <!-- <span>{{course.route}}</span> -->
+          <div class="divider"></div>
+        </div>
+        <div class="item-2">
+          <button type="button" name="button" class="btn-cover">Entrar</button>
+          <button class="cover-c"></button>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
     </div>
 </div>

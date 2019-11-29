@@ -25,7 +25,7 @@
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="main" (click)="collapseNavbar()">
                     <span>
-                        <fa-icon icon="th-list"></fa-icon>
+                        <fa-icon icon="book"></fa-icon>
                         <span jhiTranslate="global.menu.main.main">Cursos</span>
                     </span>
                 </a>
@@ -167,7 +167,7 @@
             <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
                   <span *ngIf="!getImageUrl()">
-                    <fa-icon icon="user"></fa-icon>
+                    <fa-icon class="user-icn" icon="user"></fa-icon>
                     <span jhiTranslate="global.menu.account.main">
                       Account
                     </span>
