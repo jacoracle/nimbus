@@ -15,6 +15,10 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { MainComponent } from './courses/main/main.component';
+import { VgCoreModule } from 'videogular2/compiled/core';
+import { VgControlsModule } from 'videogular2/compiled/controls';
+import { VgOverlayPlayModule } from 'videogular2/compiled/overlay-play';
+import { VgBufferingModule } from 'videogular2/compiled/buffering';
 
 @NgModule({
   imports: [
@@ -24,9 +28,21 @@ import { MainComponent } from './courses/main/main.component';
     NimbusHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     NimbusEntityModule,
-    NimbusAppRoutingModule
+    NimbusAppRoutingModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
-  declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent, MainComponent],
+  declarations: [
+    JhiMainComponent,
+    NavbarComponent,
+    ErrorComponent,
+    PageRibbonComponent,
+    ActiveMenuDirective,
+    FooterComponent,
+    MainComponent
+  ],
   bootstrap: [JhiMainComponent]
 })
 export class NimbusAppModule {}
