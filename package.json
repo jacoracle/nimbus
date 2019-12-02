@@ -31,13 +31,15 @@
     "rxjs": "6.5.2",
     "swagger-ui": "2.2.10",
     "tslib": "1.10.0",
+    "videogular2": "^7.0.1",
     "zone.js": "0.10.2"
   },
   "devDependencies": {
-    "@angular/cli": "^8.3.1",
+    "@angular/cli": "^8.3.20",
     "@angular/compiler-cli": "8.2.4",
     "@ngtools/webpack": "8.3.1",
     "@openapitools/openapi-generator-cli": "0.0.14-4.0.2",
+    "@types/core-js": "^2.5.2",
     "@types/jest": "24.0.18",
     "@types/node": "10.12.27",
     "@typescript-eslint/eslint-plugin": "2.0.0",
