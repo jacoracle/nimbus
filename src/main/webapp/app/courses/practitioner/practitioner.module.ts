@@ -8,10 +8,18 @@ import { SectionComponent } from './../section/section.component';
 import { SumComponent } from './sum/sum.component';
 import { ComponentComponent } from './../component/component.component';
 import { ComponentItemComponent } from './../component-item/component-item.component';
+import { SumMultipleChoiceComponent } from './sum-multiple-choice/sum-multiple-choice.component';
 
 @NgModule({
   imports: [NimbusSharedModule, RouterModule.forChild(practitionerRoute)],
-  declarations: [PractitionerComponent, SectionComponent, SumComponent, ComponentComponent, ComponentItemComponent],
+  declarations: [
+    PractitionerComponent,
+    SectionComponent,
+    SumComponent,
+    ComponentComponent,
+    ComponentItemComponent,
+    SumMultipleChoiceComponent
+  ],
   entryComponents: [PractitionerComponent, SumComponent]
 })
 export class PractitionerModule {}
