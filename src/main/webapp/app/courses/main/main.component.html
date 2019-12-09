@@ -2,11 +2,11 @@
   <div class="col-container-view">
 
 
-    <div *ngFor="let course of courses; index as courseIndex" class="cover-view" routerLink="{{'/' + course.route}}">
+    <div *ngFor="let course of courses; index as courseIndex" class="cover-view">
       <div class="cover-row">
 
-        <img src="./../../../assets/img/portada1.png" *ngIf="course.route == 'multiple-choice'">
-        <img src="./../../../assets/img/portada2.png" *ngIf="course.route == 'practitioner'">
+        <img src="./../../../assets/img/portada2.png" *ngIf="course.route == 'multiple-choice'" class="img-cover">
+        <img src="./../../../assets/img/portada1.png" *ngIf="course.route == 'practitioner'" class="img-cover">
 
       </div>
 
@@ -21,7 +21,7 @@
           <div class="divider"></div>
         </div>
         <div class="item-2">
-          <button type="button" name="button" class="btn-cover">Entrar</button>
+          <button type="button" name="button" class="btn-cover" routerLink="{{'/' + course.route}}">Entrar</button>
           <button class="cover-c"></button>
 
 

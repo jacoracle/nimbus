@@ -1152,3 +1152,103 @@ b {
   width: 100% !important;
   max-width: 100% !important;
 }
+
+// CSS Ax
+.cont-practitioner {
+  // border: 2px solid red;
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 61px);
+  // height: 100vh;
+  top: 0;
+}
+.topbar-p {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  left: 0;
+  background-color: white;
+  border: 1px solid silver;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row-topbar-p {
+  position: relative;
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.r-1 {
+  position: relative;
+  width: 40%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.r-2 {
+  position: relative;
+  width: 60%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.r-1 .logo-pp {
+  position: relative;
+  width: 130px;
+  height: 40px;
+  background-image: url('../../../assets/img/practitioner_logo.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.btn-close-pract {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  background-image: url('../../../assets/img/close_icon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  transition: 0.3s;
+}
+.btn-close-pract:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.home-pract {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: silver;
+  height: calc(100vh - 111px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sidebar-pract {
+  position: relative;
+  width: 300px;
+  background-color: white;
+  height: 100%;
+}
+.content-menu-pract {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.content-menu-pract .row {
+  position: relative;
+  width: 90%;
+  height: auto;
+  border: 1px solid red;
+}
