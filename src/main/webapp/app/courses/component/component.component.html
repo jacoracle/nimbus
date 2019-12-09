@@ -2,8 +2,11 @@
 Calificación: {{calificacionActividad}}
 <div></div>
 <div *ngFor="let ejercicio of ejercicios; index as indiceEjercicio">
-	<div class="ejercicio p95 centrar desarrollo centrar-contenido container" [hidden]="paginaActiva != indiceEjercicio" style="height: 500px !important;">
+    <div class="ejercicio p95 centrar desarrollo centrar-contenido container" [hidden]="paginaActiva != indiceEjercicio" style="height: 500px !important;">
+        <!--
         <jhi-sum [sumIndex]="indiceEjercicio" (ejercicioCalificado)='registrarCalificacion($event)'></jhi-sum>
+        -->
+        <jhi-component-item [data]="ejercicio"></jhi-component-item>x   
 	</div>
 </div>
 <!--Paginación-->
@@ -26,5 +29,4 @@ Calificación: {{calificacionActividad}}
         </ul>
     </div>
 </div>
-        
 <!--Ejercicio End-->

@@ -43,8 +43,6 @@ export class SumComponent extends ComponentTemplateBaseComponent implements OnIn
   ejercicioCalificado: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('search', { static: false }) searchElement: ElementRef;
 
-  constructor() {}
-
   showSearch() {
     setTimeout(() => {
       // this will make the execution after the above boolean has changed
@@ -190,7 +188,7 @@ export class SumComponent extends ComponentTemplateBaseComponent implements OnIn
     this.focus.changes.subscribe(() => {
       console.log('changes');
       console.log(this);
-      //this.focus.last.nativeElement.focus();
+      // this.focus.last.nativeElement.focus();
     });
   }
 
@@ -205,10 +203,10 @@ export class SumComponent extends ComponentTemplateBaseComponent implements OnIn
         if (this.modeloResultado[j].campo === i && this.modeloResultado[j].valor === '') {
           console.log('focus en ' + j);
           console.log(this.modeloResultado[j]);
-          //console.log(this.modeloResultado[j].nativeElement);
+          // console.log(this.modeloResultado[j].nativeElement);
           setTimeout(() => {
             // this will make the execution after the above boolean has changed
-            //this.modeloResultado[j].nativeElement.focus();
+            // this.modeloResultado[j].nativeElement.focus();
             this.focus.forEach((element, index) => (index === j ? element.nativeElement.focus() : false));
           }, 1000);
           break;
