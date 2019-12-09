@@ -15,6 +15,7 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { MainComponent } from './courses/main/main.component';
+import { ComponentTemplateBaseComponent } from './courses/component-template-base/component-template-base.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,16 @@ import { MainComponent } from './courses/main/main.component';
     NimbusEntityModule,
     NimbusAppRoutingModule
   ],
-  declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent, MainComponent],
+  declarations: [
+    JhiMainComponent,
+    NavbarComponent,
+    ErrorComponent,
+    PageRibbonComponent,
+    ActiveMenuDirective,
+    FooterComponent,
+    MainComponent,
+    ComponentTemplateBaseComponent
+  ],
   bootstrap: [JhiMainComponent]
 })
 export class NimbusAppModule {}
