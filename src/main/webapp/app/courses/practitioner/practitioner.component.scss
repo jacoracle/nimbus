@@ -319,92 +319,7 @@ b {
 }
 
 // Barra lateral SCSS
-// Sidebar
-.barra-lateral {
-  width: $width-barra-lateral;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  background-color: $barra-lateral;
 
-  .line-sidebar {
-    position: absolute;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0, 139, 208, 1), rgba(0, 169, 188, 1));
-    z-index: 1;
-  }
-
-  #titulo-menu {
-    position: relative;
-    color: $title-color;
-    font-size: 16px;
-    font-weight: 400;
-    margin-left: 9%;
-    margin-top: 20px;
-  }
-  #contenedor-limpiador {
-    height: 30px;
-    padding: 0 15px 0 15px;
-    transition: 0.4s;
-    .limpiar-seleccion {
-      position: relative;
-      width: 100%;
-      height: 25px;
-      display: flex;
-      align-items: center;
-      transition: 0.4s;
-      cursor: pointer;
-      top: 5px;
-
-      .icono-izquierda {
-        position: relative;
-        width: 10px;
-        height: 10px;
-        background-image: url('../../../assets/img/icons/izquierda.png');
-        background-position: center;
-        background-size: 100%;
-        background-repeat: no-repeat;
-      }
-      span {
-        position: relative;
-        color: #798094;
-        font-size: 14px;
-        font-weight: 400;
-        margin-left: 6px;
-      }
-    }
-  }
-
-  .contenido-menu {
-    width: 100%;
-    height: $height-contenido-menu;
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-
-    .tema {
-      position: relative;
-      width: 100%;
-      height: auto;
-      min-height: 60px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
-      cursor: pointer;
-      transition: 0.5s;
-      &:hover {
-        // background-color: rgba(226, 226, 226,.5);
-      }
-    }
-    .tema-select {
-      background-color: rgba(226, 226, 226, 0.5);
-    }
-  }
-}
 // Checkbox
 .container-label {
   pointer-events: none;
@@ -764,12 +679,16 @@ b {
 .home-pract {
   position: relative;
   width: 100%;
-  height: 100vh;
   background-color: #f6f6f6;
   height: calc(100vh - 111px);
   display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  @include smartphone {
+    flex-direction: column;
+    height: auto;
+  }
 }
 .sidebar-pract {
   position: relative;
@@ -780,6 +699,10 @@ b {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @include smartphone {
+    height: 250px;
+    width: 100%;
+  }
 
   .line-sidebar {
     position: absolute;
@@ -789,6 +712,11 @@ b {
     height: 100%;
     background: linear-gradient(180deg, rgba(0, 139, 208, 1), rgba(0, 169, 188, 1));
     z-index: 1;
+    @include smartphone {
+      width: 100%;
+      height: 5px;
+      top: 103px;
+    }
   }
 
   .item-sidebar {
@@ -807,20 +735,36 @@ b {
       left: 0;
       z-index: 0;
       opacity: 0.4;
+      @include smartphone {
+        top: 224px;
+      }
     }
 
     &:nth-child(1) {
       height: calc(100vh - 230px);
       align-items: flex-start;
       overflow-y: auto;
+      order: 1;
+      @include smartphone {
+        order: 3;
+      }
     }
     &:nth-child(2) {
       border-top: 1px solid silver;
       height: 130px;
+      order: 2;
+      @include smartphone {
+        order: 1;
+      }
     }
     &:nth-child(3) {
       border-top: 1px solid silver;
       height: 100px;
+      order: 3;
+      @include smartphone {
+        order: 2;
+        border-bottom: 1px solid silver;
+      }
     }
 
     .row-itemsb {
@@ -833,6 +777,10 @@ b {
       align-items: flex-start;
       z-index: 1;
 
+      &:nth-child(2) {
+        flex-direction: row;
+      }
+
       .title {
         position: relative;
         width: 100%;
@@ -844,6 +792,11 @@ b {
         p {
           font-size: 18px;
           color: $main-blue;
+          @include smartphone {
+            font-size: 16px;
+            margin-top: 0px;
+            height: 25px;
+          }
         }
       }
 
@@ -899,6 +852,9 @@ b {
         align-items: center;
         justify-content: flex-start;
         cursor: default;
+        @include smartphone {
+          width: 50%;
+        }
         span {
           position: relative;
           width: 25px;
@@ -926,13 +882,14 @@ b {
   position: relative;
   width: 100%;
   height: 100%;
-  border: 1px solid blue;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   overflow-y: auto;
   @include smartphone {
-    border: 1px solid red;
+    height: auto;
+    min-height: 300px;
+    overflow-y: none;
   }
 }
 .content-menu-pract .row {
@@ -954,10 +911,15 @@ b {
   outline: none;
   transition: 0.4s;
   box-shadow: 0 14px 20px rgba(0, 0, 0, 0.05), 0 8px 6px rgba(0, 0, 0, 0.08);
+  @include smartphone {
+    height: 60px;
+    margin-top: 10px;
+  }
+  &:hover {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.14), 0 10px 8px rgba(0, 0, 0, 0.12);
+  }
 }
-.btn-pract:hover {
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.14), 0 10px 8px rgba(0, 0, 0, 0.12);
-}
+
 .btn-pract .item-p {
   position: relative;
   height: 100%;
@@ -967,10 +929,16 @@ b {
 }
 .btn-pract .item-p:nth-child(1) {
   width: 10%;
+  @include smartphone {
+    width: 15%;
+  }
 }
 .btn-pract .item-p:nth-child(2) {
   width: 60%;
   justify-content: flex-start;
+  @include smartphone {
+    width: 55%;
+  }
 }
 .btn-pract .item-p:nth-child(3) {
   width: 30%;
@@ -986,9 +954,17 @@ b {
   display: flex;
   align-items: center;
   justify-content: center;
+  @include smartphone {
+    width: 30px;
+    height: 30px;
+    font-size: 19px;
+  }
 }
 .btn-pract .item-p:nth-child(2) p {
   font-size: 18px;
+  @include smartphone {
+    font-size: 16px;
+  }
   strong {
     color: $main-blue;
     font-weight: 700;
@@ -1003,6 +979,9 @@ b {
   display: flex;
   justify-content: center;
   align-items: center;
+  @include smartphone {
+    height: 50px;
+  }
   .item-tp {
     position: relative;
     height: 100%;
@@ -1024,10 +1003,17 @@ b {
         background-position: center;
         background-size: 100%;
         background-repeat: no-repeat;
+        @include smartphone {
+          width: 20px;
+          height: 20px;
+        }
       }
       p {
         margin-left: 10px;
         font-size: 18px;
+        @include smartphone {
+          font-size: 16px;
+        }
       }
     }
     &:nth-child(2) {
