@@ -1,193 +1,25 @@
-<div class="container" style="width: 100%;">
-    <!--BOTÓN CERRAR LIBRO-->
-    <!-- <a id="cerrar-libro" href="exit">
-        <img src="./assets/img/icons/cerrar.png" alt="Cerrar Libro">
-    </a> -->
-    
-    <!--
-    <div id="portada-practiraio">
-        <a id="cerrar-libro" href="exit"></a>
-        <div class="logo-portada"></div>
-    </div>
-    -->
+<div class="container cont-practitioner">
 
-    <!--
-    <div id="iframe-practicario"><iframe></iframe>
-        <hr class="ui-exit-full bg-book-color">
-    </div>
-    -->
-    
-    <div id="contenido-practiraio">
+      <div class="topbar-p">
+        <div class="row-topbar-p">
+          <div class="r-1">
+            <div class="logo-pp"></div>
+          </div>
+          <div class="r-2">
+            <a id="cerrar-libro" class="btn-close-pract" href="/"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-pract">
+        <div class="sidebar-pract"></div>
+        <div class="content-menu-pract">
+          <div class="row">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti voluptate, debitis culpa nobis nulla commodi. Cupiditate nihil quas placeat veniam?</p>
+          </div>
+        </div>
+
+      </div>
 
 
-        <!--BARRA SUPERIOR CON LOGO Y BUSCADOR-->
-        <section class="barra-superior">
-            <div class="container">
-                <div class="logo-practicario"></div>
-                <a id="cerrar-libro" href="/"></a>
-            </div>
-            <!--<div class="buscador">
-                    <img class="icono-buscar" src="./assets/img/icons/buscar.png" alt="Buscar.">
-                    <input id="buscar" type="text" autocomplete="off" placeholder="Buscar...">
-                </div>-->
-        </section>
-
-        <section class="contenedor-temas">
-            <!--BARRA LATERAL CON EL CONTENIDO DE MENÚ-->
-            <div class="barra-lateral">
-                <div class="line-sidebar"></div>
-                <div id="titulo-menu">
-                    <span>Temas</span>
-                </div>
-                <div id="contenedor-limpiador">
-                    <!--Botón de limpiar selección-->
-                    <span id='limpiar-seleccion' class='limpiar-seleccion hidden'>
-                        <div class='icono-izquierda'></div>
-                        <span>Limpiar</span>
-                    </span>
-                </div>
-                <!--CONTENIDO DEL MENÚ, TEMAS-->
-                <div id="menu" class="contenido-menu">
-                    <div class="tema" id="tema-0">
-                        <label class="container-label" id="titulo-tema-checkbox-0">
-                            <input type="checkbox" class="tema-checkbox" id="tema-checkbox-0" value="Fundamentos">
-                            <span class="checkmark"></span>
-                            <div class="icono-tema-checkbox" id="icono-tema-checkbox-0" style="background-image: url(&quot;./assets/img/iconos-temas/icono0.svg&quot;);"></div>
-                            <span class="titulo-tema-label">Suma</span>
-                        </label>
-                    </div>
-                </div>
-
-                <!--CONTENIDO DEL AVANCE GENERAL DEL LIBRO-->
-                <div id="legales-avance" class="legales-avance">
-                    <div class="shadow-sidebar"></div>
-                    <!--Botón de generales-->
-                    <a id="boton-generales" class="boton-generales" href="generales/legales/legales.html?referrer=baker">
-                        <div class="icon-general"></div>
-                        <h2 class='titulo-generales'></h2>
-                        <!--<a class="centrar-vertical" href="generales/legales/legales.html?referrer=baker"><h2 class='titulo-generales'></h2></a>-->
-                    </a>
-                    <!-- <hr class="separador-avance-general"> -->
-                    <!--Estadísticas globales-->
-                    <div class="estadisticas-globales">
-                        <!--Parte 1 de estadísticas globales-->
-                        <div class="avance-general" id="avance-general" data-toggle="collapse" data-target="#estadisticas-globales-inferior">
-                            <div class="indicador-arriba"></div>
-                            <div class="contenedor-avance">
-                                <h2>Mi avance global</h2>
-                                <div class='barra-progreso-general'>
-                                    <div class='progress' id='progreso-general'>
-                                        <div class='progress-bar' id='progreso-bar-general'></div>
-                                    </div>
-                                    <div class='porcentaje-general'>--%</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Parte 2 de estadísticas globales-->
-                        <div id="estadisticas-globales-inferior" class="estadisticas-inferior">
-                            <div id="contenedor-estadisticas-generales">
-                                <div class="porcentaje-calificacion-general">
-                                    <span class="titulo-calificacion">Calificación</span>
-                                    <div id="numero-calificacion-global" data-percent="0">
-                                        <span class='numero-calificacion-general'>--</span>
-                                    </div>
-                                </div>
-                                <div class='estrellas-monedas-generales'>
-                                    <div class='monedas-generales'>
-                                        <div class='moneda-general'></div>
-                                        <span class='monedas-globales'>--</span>
-                                    </div>
-                                    <div class='estrellas-generales' id='estrellas-generales'>
-                                        <hr class='estrella-global'>
-                                        <hr class='estrella-global'>
-                                        <hr class='estrella-global'>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--CONTENEDOR PRINCIPAL DEL LIBRO-->
-            <div class="contenedor-general">
-                <!--LISTADO DE ACTIVIDADES-->
-                <div id="temas" class="secciones-temas">
-                    <div class="seccion-tema" id="seccion-tema-0">
-                        <div class="encabezado-tema" id="encabezado-tema-0">
-                            <div class="titulo-tema-listado centrar-vertical" id="titulo-tema-listado-0">
-                                <div class="icono-tema-listado" id="icono-tema-listado-0" style="background-image: url(&quot;./assets/img/iconos-temas/icono0.svg&quot;);"></div>
-                                <span class="titulo-tema">Fundamentos</span>
-                            </div>
-                            <div class="estadisticas-tema" id="estadisticas-tema-0">
-                                <div class="estrellas-generales centrar" id="estrellas-tema-0">
-                                    <hr class="estrella-tema">
-                                    <hr class="estrella-tema">
-                                    <hr class="estrella-tema">
-                                </div>
-                                <div class="separador-estadisticas"></div>
-                                <div class="porcentaje-avance centrar-vertical" id="porcentaje-avance-0">
-                                    <div class="progress" id="progress-0">
-                                        <div class="progress-bar" id="progress-bar-0" style="width: 0%;"></div>
-                                    </div>
-                                    <div class="porcentaje-tema centrar" id="porcentaje-tema-0">0%</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="listado-actividades" id="listado-actividades-0">
-                            <div class="informacion-actividad" id="12z0n0" routerLink="/practitioner/component" routerLinkActive="active">
-                                <div class="titulo-actividad">
-                                    <div class="contenedor-numeracion">
-                                        <span class="numeracion">1</span>
-                                    </div>
-                                    <p>Suma<span class="nivel-dificultad">Básico</span></p>
-                                </div>
-                                <div class="container-estadisticas">
-                                    <div class="estadisticas-tema estadisticas-actividad" id="estadisticas-actividad-0-0">
-                                        <div class="estrellas-generales centrar" id="estrellas-actividad-0-0">
-                                            <hr class="estrella-tema">
-                                            <hr class="estrella-tema">
-                                            <hr class="estrella-tema">
-                                        </div>
-                                        <div class="separador-estadisticas"></div>
-                                        <div class="monedas-actividad" id="monedas-actividad0-0">
-                                            <div class="moneda-actividad"></div>
-                                            <span class="cantidad-monedas-actividad" id="cantidad-monedas-actividad-0-0">0/30</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="separador-tema" id="separador-tema-0"></div>
-                    </div>
-                </div>
-                <!--Generales-->
-                <div id="contenedor-generales" class="hidden">
-                    <div class="listado-actividades contenedor-extras">
-                        <div class="encabezado-tema">
-                            <div class="titulo-tema-listado centrar-vertical">
-                                <div class="icono-tema-listado icono-generales"></div>
-                                <span class="titulo-tema">Generales</span>
-                            </div>
-                        </div>
-                        <a class=" informacion-actividad centrar-vertical" href="generales/legales/legales.html?referrer=baker">
-                            <div class="titulo-actividad">
-                                <div class="contenedor-numeracion"><span class="numeracion">1</span></div>
-                                <p>Legales</p>
-                            </div>
-                        </a>
-
-                        <a class=" informacion-actividad centrar-vertical" href="" style="pointer-events: none; opacity: 0.5">
-                            <div class="titulo-actividad">
-                                <div class="contenedor-numeracion"><span class="numeracion">2</span></div>
-                                <p>Bienvenida</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
 </div>
-

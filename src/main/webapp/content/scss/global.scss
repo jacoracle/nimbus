@@ -6,12 +6,44 @@
 Bootstrap tweaks
 ===============================================================*/
 
-body,
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 300;
+// Colors
+$main-blue: #273354;
+$bg-color: #fbfbfb;
+$bg-color2: white;
+$secondary-color: #b39452;
+$white-bg: #f8fafc;
+$silver-blue: #e9edf0;
+$blue: #076afc;
+$color-text: rgb(102, 102, 102);
+$icon-color: #55559d;
+$light-purple: #d1d1e5;
+$disabled-color: rgb(164, 164, 164);
+
+$darkblue: darken($main-blue, 10%);
+$light-purple1: lighten($light-purple, 3%);
+$light-purple2: lighten($light-purple, 8%);
+$light-purplehover: lighten($light-purple, 1%);
+
+// Media query
+@mixin smartphone {
+  @media (min-width: 1px) and (max-width: 760px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media (min-width: 600px) and (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 900px) and (max-width: 1200px) {
+    @content;
+  }
 }
 
 /* Increase contrast of links to get 100% on Lighthouse Accessability Audit. Override this color if you want to change the link color, or use a Bootswatch theme */
@@ -178,5 +210,315 @@ ui bootstrap tweaks
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+// Global Style X
+body {
+  background-color: #f6f6f6;
+}
+.card {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  min-width: 0;
+  // width: 100%;
+  // height: auto;
+  word-wrap: break-word;
+  background-color: transparent;
+  background-clip: border-box;
+  border-radius: 0;
+  border: none;
+
+  padding: 0px;
+  margin-top: 0px;
+  // margin-top: 20px;
+}
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+// Ax Style
+// Modal login
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(2, 29, 70);
+}
+.modal-backdrop.show {
+  opacity: 0.8;
+}
+.modal-dialog {
+  width: 80%;
+  max-width: 1000px !important;
+  height: auto;
+  margin: 0;
+  border: 0;
+}
+.modal-content {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: transparent;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+}
+.modal-header {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: white;
+  border: 0;
+  padding: 0;
+  border-radius: 0px;
+}
+.d-block {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+.row-modal-h {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  @include smartphone {
+    flex-direction: column;
+  }
+}
+.row-modal-h .item-login {
+  position: relative;
+  width: 40%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: 1;
+  @include smartphone {
+    width: 100%;
+    order: 2;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+.row-item-login {
+  position: relative;
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-login {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  @include smartphone {
+    margin-top: 5px;
+  }
+}
+.form-login .form-group {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.form-login .form-group label {
+  position: relative;
+  color: $main-blue;
+  font-weight: 600;
+  font-size: 14px;
+}
+.form-login .form-group input {
+  position: relative;
+  border: none;
+  background-color: white;
+  border-bottom: 2px solid silver;
+  transform: 0.4s;
+}
+.form-login .form-group input:focus {
+  border: none;
+  outline: none;
+  user-select: none;
+  box-shadow: none;
+  border-bottom: 2px solid $blue;
+}
+.icon-formlogin {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 10px;
+  right: 10px;
+  background-image: url('../../assets/img/usr_icon.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  transition: 0.4s;
+}
+.usr-icon {
+  background-image: url('../../assets/img/usr_icon.svg');
+}
+.pass-icon {
+  background-image: url('../../assets/img/pass_icon.svg');
+}
+.form-login .form-group input:focus ~ .icon-formlogin {
+  transform: translateY(-8px);
+}
+
+.row-item-login .logo-login {
+  position: relative;
+  width: 160px;
+  height: 40px;
+  background-image: url('../../assets/img/logo_login.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  @include smartphone {
+    width: 140px;
+    height: 35px;
+  }
+}
+.row-item-login p {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 20px;
+  @include smartphone {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+}
+.row-item-login p.acces-login {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  color: $main-blue;
+  margin-top: 20px;
+  @include smartphone {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+.row-loginsocial {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.row-loginsocial .icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  opacity: 0.6;
+  @include smartphone {
+    width: 30px;
+    height: 30px;
+  }
+}
+.icon-google {
+  background-image: url('../../assets/img/icn_google.svg');
+}
+.icon-facebook {
+  background-image: url('../../assets/img/icn_fb.svg');
+}
+.row-modal-h .item-login-img {
+  position: relative;
+  width: 60%;
+  height: 100%;
+  background-color: #09007f;
+  background-image: url('../../assets/img/bg_modallogin-01.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  order: 2;
+  @include smartphone {
+    width: 100%;
+    order: 1;
+    height: 200px;
+  }
+}
+.row-modal-h .item-login-img button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background-color: red;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 0;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  transition: 0.3s;
+  background-image: url('../../assets/img/close_white.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+}
+.row-modal-h .item-login-img button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.remember-login {
+  position: relative;
+  width: 100%;
+  height: auto;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.btn-login {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background-color: $blue;
+  margin-top: 25px;
+  border: 0;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include smartphone {
+    height: 80%;
+    height: 40px;
+  }
+}
+
+.alert-login {
+  border: 1px solid blue;
+}
+.container-fluid {
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
