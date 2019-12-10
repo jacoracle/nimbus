@@ -778,7 +778,9 @@ b {
       z-index: 1;
 
       &:nth-child(2) {
-        flex-direction: row;
+        @include smartphone {
+          flex-direction: row;
+        }
       }
 
       .title {
