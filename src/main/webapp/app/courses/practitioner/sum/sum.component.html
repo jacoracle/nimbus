@@ -1,3 +1,4 @@
+Componente Suma
 <!--Ejercicio Start-->
 <div class="ejercicio p95 centrar desarrollo centrar-contenido container" *ngIf="paginaActiva == indiceEjercicio" style="height: 500px !important;">
 	<div class="operacion-vertical" style="width: 30%;">
@@ -11,7 +12,7 @@
 				<!--NORMAL-->
 				<span style="letter-spacing: 6px;" 
 					*ngIf="indiceo < ejercicio.operandos.length - 1
-				|| (ejercicio.tipo == 'nru' || ejercicio.tipo == 'nom')"
+				|| (ejercicio.tipo == 'nru')"
 				>{{operando}}
 				</span>
 
@@ -35,16 +36,12 @@
 						>
 					</div>
 				</div>
-				<!--INVERTIDA Opción múltiple-->
-				<div type="number" class="espacio" 
-					*ngIf="ejercicio.tipo == 'iom' && indiceo == ejercicio.operandos.length - 1">
-				</div>
 			</div>
 		</div>
 		<!--RESULTADO-->
 		<div class="resultado p100">
 			<!--INVERTIDA-->
-			<span style="letter-spacing: 6px;" *ngIf="ejercicio.tipo == 'iru' || ejercicio.tipo == 'iom'">{{ejercicio.resultado}}</span>
+			<span style="letter-spacing: 6px;" *ngIf="ejercicio.tipo == 'iru'">{{ejercicio.resultado}}</span>
 			<!--NORMAL-->
 			<div class="contInput" *ngFor="let digito of modeloResultado; index as idigito;">
 				<div *ngIf="ejercicio.tipo == 'nru'">
@@ -65,10 +62,6 @@
 					>
 				</div>
 			</div>
-			<!--Normal opción múltiple-->
-			<div type="number" class="espacio" 
-				*ngIf="ejercicio.tipo == 'nom'">
-			</div>
 		</div>
 	</div>
 
@@ -87,14 +80,6 @@
 		<div class="resultado p100">
 			<!--Invertida-->
 			<span style="letter-spacing: 8px;">{{ejercicio.resultado}}</span>
-		</div>
-	</div>
-	<!--Opciones-->
-	<div class="respuestas p80 centrar" *ngIf="ejercicio.tipo == 'nom' || ejercicio.tipo == 'iom'">
-		<div class="listado-respuestas centrar-contenido" *ngIf="ejercicio.respuestas">
-			<div class="respuesta card" *ngFor="let respuesta of objectKeys(ejercicio.respuestas); index as inciso;" (click)="ejercicio.respuesta = ejercicio.respuestas[respuesta].valor;">
-				{{ejercicio.respuestas[respuesta].valor}}
-			</div>
 		</div>
 	</div>
 	<div>

@@ -13,9 +13,7 @@ export class SumComponent extends ComponentTemplateBaseComponent implements OnIn
     leyenda: 'Suma',
     indicacion: {
       nru: 'Realiza la siguiente suma:',
-      nom: 'Selecciona el resultado de la siguiente suma:',
-      iru: 'Escribe la cantidad necesaria para que la operación sea correcta.',
-      iom: 'Selecciona la cantidad necesaria para que la operación sea correcta.'
+      iru: 'Escribe la cantidad necesaria para que la operación sea correcta.'
     },
     tipo: 'a'
   };
@@ -38,10 +36,11 @@ export class SumComponent extends ComponentTemplateBaseComponent implements OnIn
   objectKeys = Object.keys;
   respuestaCorrecta;
   calificacionActividad = 0;
-  @Input() sumIndex;
+  sumIndex;
   @Output()
   ejercicioCalificado: EventEmitter<any> = new EventEmitter<any>();
   @ViewChild('search', { static: false }) searchElement: ElementRef;
+  @Input() data;
 
   showSearch() {
     setTimeout(() => {
@@ -59,6 +58,8 @@ export class SumComponent extends ComponentTemplateBaseComponent implements OnIn
   }
 
   ngOnInit() {
+    console.log(this.data);
+    this.sumIndex = this.data.indiceEjercicio;
     if (this.params.multiplosDeCien) {
       // Definir tipos de suma (tipo de actividad interactiva)
       this.tiposOperacion = [
@@ -68,9 +69,7 @@ export class SumComponent extends ComponentTemplateBaseComponent implements OnIn
     } else {
       this.tiposOperacion = [
         'nru', // Normal - Respuesta única
-        'nom', // Normal - Opción múltiple
-        'iru', // Invertida - Respuesta única
-        'iom' // Invertida - Opción múltiple
+        'iru' // Invertida - Respuesta única
       ];
     }
 
