@@ -1,31 +1,42 @@
 <!--Ejercicio Start-->
-Calificación: {{calificacionActividad}}
+<!-- Calificación: {{calificacionActividad}} -->
+<div class="topbar-p">
+	<div class="row-topbar-p">
+		<div class="r-1">
+			<div class="logo-pp"></div>
+		</div>
+		<div class="r-2">
+			<a  class="btn-back-pract" href="/practitioner"></a>
+			<a id="cerrar-libro" class="btn-close-pract" href="/main"></a>
+		</div>
+	</div>
+</div>
+
 <div></div>
 <div *ngFor="let ejercicio of ejercicios; index as indiceEjercicio">
     <div class="ejercicio p95 centrar desarrollo centrar-contenido container" [hidden]="paginaActiva != indiceEjercicio" style="height: 500px !important;">
-        <!--
-        <jhi-sum [sumIndex]="indiceEjercicio" (ejercicioCalificado)='registrarCalificacion($event)'></jhi-sum>
-        -->
-        <jhi-component-item [data]="ejercicio"></jhi-component-item>
-	</div>
+	    <div class="container-activity" [hidden]="paginaActiva != indiceEjercicio">
+            <jhi-component-item [data]="ejercicio"></jhi-component-item>
+        </div>
+    </div>
 </div>
 <!--Paginación-->
-<div class="paginas centrar centrar-contenido">
-    <div class="contenedor-barra-inferior">
-        <ul class="listado-paginas" id="paginacion">
-            <li *ngFor="let pagina of paginas; index as indicePagina;" 
-                (click)="cambiarPagina(indicePagina)" 
-                class="pagina"
+<div class="footer-pag">
+    <div class="row-footer-pag">
+        <ul class="pagination-dock" id="paginacion">
+            <li *ngFor="let pagina of paginas; index as indicePagina;"
+                (click)="cambiarPagina(indicePagina)"
+                class="li-pag"
                 [ngClass]="{
                     'bien':ejercicios[indicePagina].calificada && ejercicios[indicePagina].calificacion === 10,
                     'mal':ejercicios[indicePagina].calificada && ejercicios[indicePagina].calificacion === 0,
                     'medio_punto':ejercicios[indicePagina].calificada && ejercicios[indicePagina].calificacion < 10 && ejercicios[indicePagina].calificacion > 10,
                     'activa': pagina.seleccionada
                 }">
-                <div class="pagina-numero">
+                <div class="number-pag">
                     {{indicePagina + 1}}
                 </div>
-            </li>            
+            </li>
         </ul>
     </div>
 </div>

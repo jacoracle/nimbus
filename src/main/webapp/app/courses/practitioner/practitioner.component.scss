@@ -632,6 +632,7 @@ b {
 .row-topbar-p {
   position: relative;
   width: 90%;
+  max-width: 1200px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -778,7 +779,9 @@ b {
       z-index: 1;
 
       &:nth-child(2) {
-        flex-direction: row;
+        @include smartphone {
+          flex-direction: row;
+        }
       }
 
       .title {

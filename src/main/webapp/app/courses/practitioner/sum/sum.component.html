@@ -9,7 +9,7 @@
 			<!--SUMANDOS-->
 			<div *ngFor="let operando of ejercicio.operandos; index as indiceo;">
 				<!--NORMAL-->
-				<span style="letter-spacing: 6px;" 
+				<span style="letter-spacing: 6px;"
 					*ngIf="indiceo < ejercicio.operandos.length - 1
 				|| (ejercicio.tipo == 'nru' || ejercicio.tipo == 'nom')"
 				>{{operando}}
@@ -19,7 +19,7 @@
 				<div *ngIf="ejercicio.tipo == 'iru' && indiceo == ejercicio.operandos.length - 1">
 					<div class="contInput" *ngFor="let digito of modeloResultado; index as idigito;">
 						<!--Campos para dígitos-->
-						<input 
+						<input
 							*ngIf="digito != '.' && digito != ','"
 							type="number"
 							class="resultadoi digito-resultado"
@@ -28,7 +28,7 @@
 							#focus
 						>
 						<!--Campos para coma o punto-->
-						<input 
+						<input
 							*ngIf="digito == '.' || digito == ','"
 							type="text"
 							class="separador digito-resultado"
@@ -36,7 +36,7 @@
 					</div>
 				</div>
 				<!--INVERTIDA Opción múltiple-->
-				<div type="number" class="espacio" 
+				<div type="number" class="espacio"
 					*ngIf="ejercicio.tipo == 'iom' && indiceo == ejercicio.operandos.length - 1">
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 			<div class="contInput" *ngFor="let digito of modeloResultado; index as idigito;">
 				<div *ngIf="ejercicio.tipo == 'nru'">
 					<!--Campos para dígitos-->
-					<input 
+					<input
 						*ngIf="digito != '.' && digito != ','"
 						type="number"
 						class="resultadoi digito-resultado"
@@ -58,7 +58,7 @@
 						#focus
 					>
 					<!--Campos para coma o punto-->
-					<input 
+					<input
 						*ngIf="digito == '.' || digito == ','"
 						type="text"
 						class="separador digito-resultado"
@@ -66,7 +66,7 @@
 				</div>
 			</div>
 			<!--Normal opción múltiple-->
-			<div type="number" class="espacio" 
+			<div type="number" class="espacio"
 				*ngIf="ejercicio.tipo == 'nom'">
 			</div>
 		</div>
