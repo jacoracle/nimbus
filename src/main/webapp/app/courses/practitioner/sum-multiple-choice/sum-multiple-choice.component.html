@@ -1,1 +1,116 @@
-<p>sum-multiple-choice works!</p>
+Componente Suma Opción Múltiple
+<!--Ejercicio Start-->
+<div class="ejercicio p95 centrar desarrollo centrar-contenido container" *ngIf="paginaActiva == indiceEjercicio" style="height: 500px !important;">
+        <div class="operacion-vertical" style="width: 30%;">
+            <p class="correctaTexto retro">Tu respuesta:</p>
+            <div class="signo p20">
+                +
+            </div>
+            <div class="operandos p80" style="display: inline-block;">
+                <!--SUMANDOS-->
+                <div *ngFor="let operando of ejercicio.operandos; index as indiceo;">
+                    <!--NORMAL-->
+                    <span style="letter-spacing: 6px;" 
+                        *ngIf="indiceo < ejercicio.operandos.length - 1
+                    || (ejercicio.tipo == 'nru' || ejercicio.tipo == 'nom')"
+                    >{{operando}}
+                    </span>
+    
+                    <!--INVERTIDA respuesta única-->
+                    <div *ngIf="ejercicio.tipo == 'iru' && indiceo == ejercicio.operandos.length - 1">
+                        <div class="contInput" *ngFor="let digito of modeloResultado; index as idigito;">
+                            <!--Campos para dígitos-->
+                            <input 
+                                *ngIf="digito != '.' && digito != ','"
+                                type="number"
+                                class="resultadoi digito-resultado"
+                                [(ngModel)]="modeloResultado[idigito].valor"
+                                (ngModelChange)='cambiarFocus()'
+                                #focus
+                            >
+                            <!--Campos para coma o punto-->
+                            <input 
+                                *ngIf="digito == '.' || digito == ','"
+                                type="text"
+                                class="separador digito-resultado"
+                            >
+                        </div>
+                    </div>
+                    <!--INVERTIDA Opción múltiple-->
+                    <div type="number" class="espacio" 
+                        *ngIf="ejercicio.tipo == 'iom' && indiceo == ejercicio.operandos.length - 1">
+                    </div>
+                </div>
+            </div>
+            <!--RESULTADO-->
+            <div class="resultado p100">
+                <!--INVERTIDA-->
+                <span style="letter-spacing: 6px;" *ngIf="ejercicio.tipo == 'iru' || ejercicio.tipo == 'iom'">{{ejercicio.resultado}}</span>
+                <!--NORMAL-->
+                <div class="contInput" *ngFor="let digito of modeloResultado; index as idigito;">
+                    <div *ngIf="ejercicio.tipo == 'nru'">
+                        <!--Campos para dígitos-->
+                        <input 
+                            *ngIf="digito != '.' && digito != ','"
+                            type="number"
+                            class="resultadoi digito-resultado"
+                            [(ngModel)]="modeloResultado[idigito].valor"
+                            (ngModelChange)='cambiarFocus()'
+                            #focus
+                        >
+                        <!--Campos para coma o punto-->
+                        <input 
+                            *ngIf="digito == '.' || digito == ','"
+                            type="text"
+                            class="separador digito-resultado"
+                        >
+                    </div>
+                </div>
+                <!--Normal opción múltiple-->
+                <div type="number" class="espacio" 
+                    *ngIf="ejercicio.tipo == 'nom'">
+                </div>
+            </div>
+        </div>
+    
+        <!--RETROALIMENTACIÓN-->
+        <div class="operacion-vertical resuelta card retro" style="width: 35%;">
+            <p class="correctaTexto retro">La respuesta corrrecta es:</p>
+            <div class="signo p20">+</div>
+            <div class="operandos p80" style="display: inline-block;">
+                <!--Sumandos-->
+                <div *ngFor="let operando of ejercicio.operandos; index as indiceo;">
+                    <!--Operandos-->
+                    <span style="letter-spacing: 7px;">{{operando}}</span>
+                </div>
+            </div>
+            <!--Resultado-->
+            <div class="resultado p100">
+                <!--Invertida-->
+                <span style="letter-spacing: 8px;">{{ejercicio.resultado}}</span>
+            </div>
+        </div>
+        <!--Opciones-->
+        <div class="respuestas p80 centrar" *ngIf="ejercicio.tipo == 'nom' || ejercicio.tipo == 'iom'">
+            <div class="listado-respuestas centrar-contenido" *ngIf="ejercicio.respuestas">
+                <div class="respuesta card" *ngFor="let respuesta of objectKeys(ejercicio.respuestas); index as inciso;" (click)="ejercicio.respuesta = ejercicio.respuestas[respuesta].valor;">
+                    {{ejercicio.respuestas[respuesta].valor}}
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="boton-enviar">
+                <a class="btn-floating btn-large  blue darken-3 btn ayuda r60" (click)="mostrarVideoTutorial()">
+                    <img src="" style="width: 22px; height: 22px;">
+                </a>
+                <div class="p40" [hidden]="ejercicio.calificada == true">
+                    <div class="btn-enviar centrar-contenido" (click)="calificar()">
+                        <span>Enviar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--Ejercicio End-->
+    

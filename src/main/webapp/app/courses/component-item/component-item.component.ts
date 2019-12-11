@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { SumComponent } from '../practitioner/sum/sum.component';
 import { ComponentTemplateBaseComponent } from '../component-template-base/component-template-base.component';
+import { SumMultipleChoiceComponent } from '../practitioner/sum-multiple-choice/sum-multiple-choice.component';
 
 @Component({
   selector: 'jhi-component-item',
@@ -11,7 +12,8 @@ export class ComponentItemComponent implements OnInit {
   @Input() data: any;
   @ViewChild('container', { static: true, read: ViewContainerRef }) private container: ViewContainerRef;
   readonly templateMapper = {
-    sum: SumComponent
+    sum: SumComponent,
+    sumMultipleChoice: SumMultipleChoiceComponent
   };
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
@@ -20,8 +22,6 @@ export class ComponentItemComponent implements OnInit {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       this.getComponentForComponentType(this.data.InteractiveActivityType)
     );
-    console.log(this.container);
-    console.log(typeof this.container);
     const viewContainerRef = this.container;
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
