@@ -5,7 +5,6 @@ import { ICalificacion } from 'app/shared/model/calificacion.model';
 import * as moment from 'moment';
 import { CalificacionService } from './../../entities/calificacion/calificacion.service';
 import { ComponenteService } from './../../entities/componente/componente.service';
-import { SumComponent } from '../practitioner/sum/sum.component';
 
 @Component({
   selector: 'jhi-component',
@@ -19,9 +18,7 @@ export class ComponentComponent implements OnInit {
   paginaActiva = -1;
   calificacionActividad = 0;
   @ViewChild('container', { read: ViewContainerRef, static: false }) private container: ViewContainerRef;
-  readonly templateMapper = {
-    sum: SumComponent
-  };
+  interactiveActivityTypes = ['sum', 'sumMultipleChoice'];
 
   constructor(protected calificacionService: CalificacionService, protected componenteService: ComponenteService) {}
 
@@ -52,7 +49,8 @@ export class ComponentComponent implements OnInit {
       this.ejercicios[i] = {
         calificada: false,
         calificacion: 0,
-        InteractiveActivityType: 'sum'
+        InteractiveActivityType: this.interactiveActivityTypes[this.numeroAleatorio(0, this.interactiveActivityTypes.length - 1)],
+        indiceEjercicio: i
       };
     }
     this.paginaActiva = 0;
@@ -111,4 +109,8 @@ export class ComponentComponent implements OnInit {
   protected onSaveSuccess() {}
 
   protected onSaveError() {}
+
+  numeroAleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
 }

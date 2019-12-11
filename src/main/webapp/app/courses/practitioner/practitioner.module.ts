@@ -20,6 +20,6 @@ import { SumMultipleChoiceComponent } from './sum-multiple-choice/sum-multiple-c
     ComponentItemComponent,
     SumMultipleChoiceComponent
   ],
-  entryComponents: [PractitionerComponent, SumComponent]
+  entryComponents: [PractitionerComponent, SumComponent, SumMultipleChoiceComponent]
 })
 export class PractitionerModule {}
