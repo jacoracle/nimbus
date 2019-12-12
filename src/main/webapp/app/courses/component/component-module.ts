@@ -6,7 +6,7 @@ import { ComponentComponent } from './component.component';
 
 @NgModule({
   imports: [NimbusSharedModule],
-  declarations: [ComponentComponent],
+  declarations: [],
   entryComponents: [ComponentComponent]
 })
 export class ComponentModule {}

@@ -5,7 +5,7 @@ import { SumComponent } from './sum.component';
 
 @NgModule({
   imports: [NimbusSharedModule],
-  declarations: [SumComponent],
+  declarations: [],
   entryComponents: [SumComponent]
 })
 export class SumModule {}

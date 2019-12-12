@@ -1,6 +1,6 @@
 Componente Suma Opción Múltiple
 <!--Ejercicio Start-->
-<div class="ejercicio p95 centrar desarrollo centrar-contenido container" *ngIf="paginaActiva == indiceEjercicio" style="height: 500px !important;">
+<div class="ejercicio p95 centrar desarrollo centrar-contenido container" style="height: 500px !important;">
         <div class="operacion-vertical" style="width: 30%;">
             <p class="correctaTexto retro">Tu respuesta:</p>
             <div class="signo p20">
@@ -100,7 +100,7 @@ Componente Suma Opción Múltiple
         </div>
         <div>
             <div class="boton-enviar">
-                <a class="btn-floating btn-large  blue darken-3 btn ayuda r60" (click)="mostrarVideoTutorial()">
+                <a class="btn-floating btn-large  blue darken-3 btn ayuda r60">
                     <img src="" style="width: 22px; height: 22px;">
                 </a>
                 <div class="p40" [hidden]="ejercicio.calificada == true">
